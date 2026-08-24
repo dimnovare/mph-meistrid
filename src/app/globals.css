@@ -1,0 +1,365 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   MPH Meistrid OÜ — design tokens
+   Tailwind CSS v4 (verified against node_modules/tailwindcss @ 4.3.3)
+   CSS-first config: no tailwind.config.js exists and none should be added.
+
+   Full rationale, contrast tables and component specs: /docs/design-system.md
+
+   Theme decision: ONE canonical light appearance. `prefers-color-scheme: dark`
+   is deliberately NOT honoured — see design-system.md §3. Dark is expressed as
+   opt-in *sections* via the `.on-ink` context class, not as a second theme.
+   ========================================================================== */
+
+/* Dark-section variant. Lets utilities target the ink bands without a second
+   theme: `<section class="on-ink">` … `<p class="on-ink:text-on-ink-muted">`.
+   Kept because the ink bands (hero, final CTA, footer) are the only places
+   where the light tokens invert. */
+@custom-variant on-ink (&:where(.on-ink, .on-ink *));
+
+/* `static` (not a bare `@theme`) is deliberate. By default Tailwind v4 only
+   emits the theme variables it can prove are used, which silently drops any
+   token that is referenced from hand-written CSS rather than from a utility
+   class — the photo scrim gradients and the button "lip" are exactly that.
+   `static` emits every token below unconditionally. Cost is ~50 custom
+   properties (<1KB gzipped) because the stock palette is reset away first. */
+@theme static {
+  /* ------------------------------------------------------------------ *
+   * COLOUR
+   * Namespace reset: drops Tailwind's ~250 default palette variables from
+   * the emitted :root. This is a real payload win on a site whose whole
+   * point is Core Web Vitals, and it stops `bg-slate-500` (cold SaaS grey)
+   * from ever appearing by accident. Only the tokens below exist.
+   * ------------------------------------------------------------------ */
+  --color-*: initial;
+
+  /* Kept for lightbox chrome and pure-white overlays only. */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Light surfaces — warm neutrals (hue ~40°, not blue-grey slate).
+     Warmth is what separates "construction" from "software startup", and it
+     sits under the orange accent without the palette going muddy. */
+  --color-page: #ffffff; /* page background */
+  --color-surface: #f6f5f2; /* alternating band, quiet card fill */
+  --color-surface-2: #eceae5; /* input wells, hover surface, disabled fill */
+
+  /* Two border tokens, not one. `line` is decorative and does NOT meet 3:1;
+     `line-strong` does (3.66:1 on page) and is the ONLY border permitted as
+     the sole visible boundary of an interactive control. WCAG 1.4.11. */
+  --color-line: #ddd9d3;
+  --color-line-strong: #8b857c;
+
+  /* Text on light */
+  --color-fg-muted: #6a655e; /* 5.78:1 on page — secondary text */
+  --color-fg: #262320; /* 15.63:1 on page — body */
+  --color-fg-strong: #14120f; /* 18.70:1 on page — headings */
+
+  /* Ink bands (hero scrim, final CTA, footer, lightbox, mobile call bar) */
+  --color-ink: #16130f;
+  --color-ink-raised: #262218; /* raised surface inside an ink band */
+  --color-ink-line: #716d65; /* 3.44:1 on ink, 3.08:1 on ink-raised */
+  --color-on-ink: #f5f3ef; /* 16.71:1 on ink */
+  --color-on-ink-muted: #b5afa4; /* 8.49:1 on ink */
+
+  /* Accent — Direction A: warm construction orange.
+     SIX tokens because one orange cannot do every job accessibly:
+     `accent` is a FILL (3.55:1 on white → large text / UI only),
+     `accent-strong` is the same hue pushed dark enough to be TEXT on light. */
+  --color-accent: #e2600f; /* rest fill */
+  --color-accent-hover: #f0721e; /* fill hover — LIGHTER, so the ink label
+                                    gains contrast (6.35:1) instead of losing it */
+  --color-accent-press: #d45a0d; /* fill active — ink label still 4.69:1 */
+  --color-accent-strong: #b04b0c; /* accent as text/link on light: 5.44:1 on
+                                     page, 4.99:1 on surface, 4.53:1 on surface-2 */
+  --color-accent-on-ink: #ff8c42; /* accent as text on ink: 8.01:1 */
+  --color-accent-soft: #fbede3; /* tint block behind notes/disclaimers */
+  --color-on-accent: #14120f; /* label ON an accent fill: 5.27:1.
+                                 NEVER white — white on #E2600F is 3.55:1 and
+                                 fails AA body. Black-on-orange is also the
+                                 native visual language of site signage. */
+
+  /* Status — admin feedback. Both pass 4.5:1 in both directions on white. */
+  --color-danger: #b4231a; /* 6.57:1 vs white, either direction */
+  --color-danger-soft: #fcedeb;
+  --color-success: #1b6b3f; /* 6.52:1 vs white, either direction */
+  --color-success-soft: #eaf3ed;
+
+  /* Focus. One ring colour site-wide, flipped only inside ink bands.
+     Ink ring clears 3:1 against every light surface AND against the orange
+     fill (5.27:1), so a single token works on top of every component. */
+  --color-focus: #14120f;
+  --color-focus-on-ink: #f5f3ef;
+
+  /* ------------------------------------------------------------------ *
+   * TYPOGRAPHY
+   * Two families, three weight files total (see design-system.md §4).
+   * Populated by next/font/google in src/app/layout.tsx — the loader must
+   * expose exactly these variable names on <html>.
+   * Non-inline @theme (not `@theme inline`) is used on purpose: it emits
+   * --font-sans / --font-display into :root so the base layer below and any
+   * hand-written CSS can read them, not just the generated utilities.
+   * ------------------------------------------------------------------ */
+  --font-sans:
+    var(--font-mph-sans), "Segoe UI", system-ui, -apple-system, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-display:
+    var(--font-mph-display), var(--font-mph-sans), "Segoe UI Condensed",
+    "Arial Narrow", system-ui, sans-serif;
+
+  /* Type scale. Namespace reset again: only these seven sizes exist, so
+     `text-4xl` cannot smuggle an off-scale size into the build. Every value
+     is a clamp() fluid between 360px and 1280px viewport.
+     Verified: at 360px, h1 renders the worst-case Estonian compound
+     "siseviimistlustööd" at 256px inside 320px of available width. */
+  --text-*: initial;
+
+  --text-h1: clamp(2.25rem, 1.3696rem + 3.913vw, 4.5rem); /* 36 → 72px */
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h1--font-weight: 700;
+
+  --text-h2: clamp(1.75rem, 1.3587rem + 1.7391vw, 2.75rem); /* 28 → 44px */
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: clamp(1.3125rem, 1.1413rem + 0.7609vw, 1.75rem); /* 21 → 28px */
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 700;
+
+  --text-lead: clamp(1.125rem, 1.0272rem + 0.4348vw, 1.375rem); /* 18 → 22px */
+  --text-lead--line-height: 1.45;
+  --text-lead--letter-spacing: -0.005em;
+  --text-lead--font-weight: 400;
+
+  /* Body floor is 16px: below that iOS Safari auto-zooms on input focus. */
+  --text-body: clamp(1rem, 0.9755rem + 0.1087vw, 1.0625rem); /* 16 → 17px */
+  --text-body--line-height: 1.6;
+  --text-body--letter-spacing: 0em; /* never negative — Cyrillic needs the
+                                       counters open at text sizes */
+  --text-body--font-weight: 400;
+
+  --text-small: clamp(0.875rem, 0.8505rem + 0.1087vw, 0.9375rem); /* 14 → 15px */
+  --text-small--line-height: 1.5;
+  --text-small--letter-spacing: 0em;
+  --text-small--font-weight: 400;
+
+  /* Eyebrow / kicker / form label. Uppercase, so it needs positive tracking —
+     doubly so in Cyrillic, where uppercase runs are visually denser. */
+  --text-label: clamp(0.8125rem, 0.788rem + 0.1087vw, 0.875rem); /* 13 → 14px */
+  --text-label--line-height: 1.2;
+  --text-label--letter-spacing: 0.08em;
+  --text-label--font-weight: 600;
+
+  /* ------------------------------------------------------------------ *
+   * SPACING
+   * `--spacing` stays at 4px so the whole dynamic scale (p-2, gap-6, …)
+   * keeps working. Named tokens below are the layout rhythm.
+   * ------------------------------------------------------------------ */
+  --spacing: 0.25rem;
+
+  --spacing-gutter: clamp(1.25rem, 0.1739rem + 4.7826vw, 4rem); /* 20 → 64px */
+  --spacing-section: clamp(4.5rem, 3rem + 6.6667vw, 9rem); /* 72 → 144px */
+  --spacing-section-sm: clamp(3rem, 2.1667rem + 3.7037vw, 5.5rem); /* 48 → 88px */
+  --spacing-block: clamp(2rem, 1.413rem + 2.6087vw, 3.5rem); /* 32 → 56px */
+
+  /* Fixed chrome. scroll-padding-top below is derived from these, so an
+     anchor target never lands underneath the sticky header. */
+  --spacing-header: 4rem; /* 64px — mobile */
+  --spacing-header-lg: 5rem; /* 80px — ≥1024px */
+  --spacing-callbar: 4rem; /* 64px — mobile sticky call bar */
+
+  /* Interactive sizing floors */
+  --spacing-tap: 2.75rem; /* 44px — absolute minimum touch target */
+  --spacing-control: 3rem; /* 48px — public site buttons and inputs */
+  --spacing-control-lg: 3.5rem; /* 56px — admin controls */
+  --spacing-control-xl: 5.5rem; /* 88px — admin dashboard primary actions */
+
+  /* ------------------------------------------------------------------ *
+   * CONTAINERS
+   * Reset so `max-w-md` etc. can't reintroduce arbitrary measures.
+   * ------------------------------------------------------------------ */
+  --container-*: initial;
+  --container-page: 80rem; /* 1280px — default content frame */
+  --container-wide: 90rem; /* 1440px — project grids, full-bleed photo bands */
+  --container-copy: 38rem; /* 608px — running text: ~71 Latin / ~68 Cyrillic
+                              characters per line at 17px */
+  --container-form: 34rem; /* 544px — single-column forms */
+
+  /* 560px: where the mobile edge-to-edge project column becomes a 2-up grid. */
+  --breakpoint-xs: 35rem;
+
+  /* ------------------------------------------------------------------ *
+   * RADII — near-square. Rounded corners read "app"; hard corners read
+   * "built". Photography is never rounded: a 4:3 photo with square corners
+   * looks like a printed portfolio plate.
+   * Semantic names on purpose, so `rounded-lg` can't mean two things.
+   * ------------------------------------------------------------------ */
+  --radius-*: initial;
+  --radius-none: 0px; /* all photography, project cards, hero */
+  --radius-chip: 2px; /* badges, status pills */
+  --radius-control: 4px; /* buttons, inputs, service cards, price notes */
+  --radius-panel: 8px; /* admin controls, dialogs, upload dropzone */
+
+  /* ------------------------------------------------------------------ *
+   * SHADOWS — four, all warm-tinted off the ink (#14120F) rather than pure
+   * black, and all restrained. Cards use borders, not elevation.
+   * ------------------------------------------------------------------ */
+  --shadow-*: initial;
+  --shadow-edge: inset 0 -2px 0 rgb(20 18 15 / 0.14); /* the physical "lip" on
+                                                         filled buttons */
+  --shadow-frame: inset 0 0 0 1px rgb(20 18 15 / 0.08); /* hairline INSIDE every
+     project photo. Without it, a blown-out white wall bleeds into the white
+     page and the grid falls apart. Single biggest fix for amateur photos. */
+  --shadow-raise: 0 1px 2px rgb(20 18 15 / 0.06); /* header, once scrolled */
+  --shadow-bar: 0 -2px 12px rgb(20 18 15 / 0.18); /* mobile call bar, upward */
+  --shadow-overlay: 0 12px 32px rgb(20 18 15 / 0.16); /* dialogs, lightbox chrome */
+
+  /* ------------------------------------------------------------------ *
+   * MOTION — the complete allowed set. Anything not listed here is banned.
+   * `--ease-out` intentionally overrides Tailwind's default so the built-in
+   * `ease-out` utility and hand-written CSS share one curve.
+   * ------------------------------------------------------------------ */
+  --ease-out: cubic-bezier(0.2, 0, 0.1, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  --transition-duration-fast: 120ms; /* colour / border / background */
+  --transition-duration-base: 180ms; /* opacity fades */
+  --transition-duration-slow: 240ms; /* the one transform: card image scale */
+  --transition-duration-exit: 120ms; /* exits ≈ 65% of enter */
+
+  --default-transition-duration: 120ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0, 0.1, 1);
+
+  /* ------------------------------------------------------------------ *
+   * ASPECT RATIOS — 4:3 is the native ratio of a phone camera, so covers
+   * crop nothing. See design-system.md §6.
+   * ------------------------------------------------------------------ */
+  --aspect-cover: 4 / 3; /* project cover + gallery thumbs */
+  --aspect-wide: 3 / 2; /* optional wide feature plate */
+}
+
+@layer base {
+  html {
+    /* Locks UA form controls, scrollbars and `color-scheme`-aware widgets to
+       light. Without this, a phone in system dark mode renders dark <select>
+       and date pickers inside our light admin. */
+    color-scheme: light;
+
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+
+    /* Anchor nav (#teenused, #hinnad …) must clear the sticky header plus a
+       little breathing room, or the section heading lands under the bar. */
+    scroll-padding-top: calc(var(--spacing-header) + 1.5rem);
+  }
+
+  @media (min-width: 64rem) {
+    html {
+      scroll-padding-top: calc(var(--spacing-header-lg) + 2rem);
+    }
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-fg);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Reserve the space the fixed mobile call bar occupies, so the footer is
+       never covered. Removed above 1024px where the bar is not rendered. */
+    padding-bottom: calc(var(--spacing-callbar) + env(safe-area-inset-bottom, 0px));
+  }
+
+  @media (min-width: 64rem) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+
+  /* Estonian compounds ("siseviimistlustööd") and long Russian words can
+     exceed a 320px line. `hyphens: auto` needs the lang attribute on <html>,
+     which next-intl sets; `break-word` is the guaranteed fallback.
+     `text-wrap: balance` keeps two-line headings from orphaning a word. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-fg-strong);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  /* One focus treatment for the entire site and admin. The ink ring clears
+     3:1 against every light surface and against the orange fill, so it never
+     needs a per-component override — only an inversion inside ink bands. */
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  .on-ink :focus-visible,
+  .on-ink:focus-visible {
+    outline-color: var(--color-focus-on-ink);
+  }
+
+  /* Inputs sit flush in dense forms; a 2px offset would collide with the
+     neighbouring field. */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline-offset: 1px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-on-accent); /* 5.27:1 — selected text stays readable */
+  }
+
+  /* Keyboard entry point. Visually hidden until focused. */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+  }
+
+  .skip-link:focus-visible {
+    left: var(--spacing-gutter);
+    top: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--color-page);
+    color: var(--color-fg-strong);
+    border-radius: var(--radius-control);
+    box-shadow: var(--shadow-overlay);
+  }
+
+  /* Reduced motion: 1ms rather than 0s, so `transitionend` listeners still
+     fire and no interaction logic silently stalls. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 1ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

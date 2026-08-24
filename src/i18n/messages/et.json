@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "Ehitus- ja remonditööd '{{CITY_ET}}' | MPH Meistrid",
+    "description": "MPH Meistrid OÜ teeb korteri- ja majaremonti, siseviimistlust ja ehitustöid '{{REGION_ET}}'. Vaata tehtud töid ja küsi pakkumist.",
+    "ogTitle": "MPH Meistrid — ehitus- ja remonditööd '{{CITY_ET}}'",
+    "ogDescription": "Korteri- ja majaremont, siseviimistlus ja ehitustööd '{{REGION_ET}}'. Vaata tehtud töid ja küsi pakkumist.",
+    "ogSiteName": "MPH Meistrid OÜ",
+    "ogImageAlt": "MPH Meistrid OÜ — ehitus- ja remonditööd"
+  },
+  "nav": {
+    "services": "Teenused",
+    "works": "Tehtud tööd",
+    "pricing": "Hinnad",
+    "about": "Meist",
+    "contact": "Kontakt",
+    "ctaQuote": "Küsi pakkumist",
+    "ctaPhone": "Helista",
+    "langSwitch": "Rus",
+    "lang": {
+      "et": "Eesti",
+      "ru": "Vene"
+    }
+  },
+  "hero": {
+    "title": "Ehitus-, remondi- ja siseviimistlustööd '{{REGION_ET}}'",
+    "subtitle": "Teeme korteri- ja majaremonti, siseviimistlust ja ehitustöid '{{REGION_ET}}'. Kirjuta või helista — vaatame töö üle ja teeme pakkumise.",
+    "ctaPrimary": "Küsi pakkumist",
+    "ctaSecondary": "Helista",
+    "ctaSecondaryAria": "Helista numbril '{{PHONE}}'"
+  },
+  "services": {
+    "heading": "Teenused",
+    "intro": "Teeme ehitus-, remondi- ja siseviimistlustöid. Kui vajalikku tööd nimekirjas ei ole, küsi üle.",
+    "cta": "Küsi pakkumist"
+  },
+  "work": {
+    "heading": "Tehtud tööd",
+    "intro": "Siin on osa meie tehtud töödest.",
+    "empty": "Fotod tehtud töödest lisame siia peagi. Seni helista või kirjuta — räägime lähemalt, mida oleme teinud.",
+    "emptyCta": "Küsi pakkumist",
+    "card": {
+      "view": "Vaata pilte",
+      "viewAria": "Ava töö „{name}“ pildid",
+      "locationAria": "Asukoht: {location}",
+      "photoCount": "{count, plural, one {{count} pilt} other {{count} pilti}}"
+    },
+    "gallery": {
+      "close": "Sulge",
+      "prev": "Eelmine pilt",
+      "next": "Järgmine pilt",
+      "counter": "Pilt {index} / {total}",
+      "loading": "Laen pilti…",
+      "imageAlt": "{name} — pilt {index}"
+    }
+  },
+  "pricing": {
+    "heading": "Hinnad",
+    "intro": "Orienteeruvad hinnad, et saaksid mahust aimu. Konkreetse töö hinna ütleme pärast ülevaatamist.",
+    "colService": "Teenus",
+    "colPrice": "Hind",
+    "disclaimer": "Hinnad on orienteeruvad. Täpne hind sõltub töö mahust ja ruumi seisukorrast ning lepitakse kokku lõplikus pakkumises.",
+    "vatNote": "'{{VAT_NOTE_ET}}'",
+    "cta": "Küsi pakkumist"
+  },
+  "about": {
+    "heading": "Meist",
+    "p1": "MPH Meistrid OÜ on ehitusettevõte, mis teeb ehitus-, remondi- ja siseviimistlustöid '{{REGION_ET}}'.",
+    "p2": "Teeme nii üksikuid töid kui ka korteri või maja remonti tervikuna.",
+    "p3": "Vaata tehtud töid ja võta ühendust — räägime töö üle ja teeme pakkumise.",
+    "extra": "'{{ABOUT_EXTRA_ET}}'",
+    "companyLabel": "Ettevõte",
+    "companyName": "MPH Meistrid OÜ",
+    "regCodeLabel": "Registrikood",
+    "regCode": "17317439"
+  },
+  "contact": {
+    "heading": "Kontakt",
+    "intro": "Helista või kirjuta — räägime töö üle ja teeme pakkumise.",
+    "phoneLabel": "Telefon",
+    "phoneValue": "'{{PHONE}}'",
+    "emailLabel": "E-post",
+    "emailValue": "'{{EMAIL}}'",
+    "companyLabel": "Ettevõte",
+    "companyValue": "MPH Meistrid OÜ",
+    "regCodeLabel": "Registrikood",
+    "regCodeValue": "17317439",
+    "regionLabel": "Piirkond",
+    "regionValue": "'{{REGION_NOMINATIVE_ET}}'",
+    "cta": "Küsi pakkumist",
+    "callCta": "Helista '{{PHONE}}'",
+    "emailCta": "Kirjuta '{{EMAIL}}'",
+    "social": "Sotsiaalmeedia",
+    "facebook": "Facebook",
+    "instagram": "Instagram"
+  },
+  "quote": {
+    "heading": "Küsi pakkumist",
+    "intro": "Kirjuta lühidalt, mida on vaja teha. Kui sul on ruumist pilte, lisa need juurde — nii saame täpsema pakkumise teha.",
+    "name": {
+      "label": "Nimi",
+      "placeholder": "Sinu nimi"
+    },
+    "phone": {
+      "label": "Telefon",
+      "placeholder": "+372 5xxx xxxx"
+    },
+    "email": {
+      "label": "E-post",
+      "placeholder": "nimi@näide.ee",
+      "optional": "ei ole kohustuslik"
+    },
+    "message": {
+      "label": "Mida on vaja teha?",
+      "placeholder": "Näiteks: vannitoa remont, umbes 4 m², maja on 1970ndatest."
+    },
+    "photos": {
+      "label": "Fotod (kui sul on)",
+      "hint": "Kuni '{{MAX_UPLOAD_COUNT}}' pilti. Suured pildid tehakse enne saatmist väiksemaks.",
+      "button": "Vali fotod",
+      "remove": "Eemalda"
+    },
+    "submit": "Saada päring",
+    "submitting": "Saadan…",
+    "required": "kohustuslik",
+    "privacyNote": "Kasutame sinu andmeid ainult selleks, et pakkumise teha ja sinuga ühendust võtta.",
+    "success": {
+      "title": "Aitäh! Päring on saadetud.",
+      "body": "Võtame sinuga ühendust. Kui asi on kiire, helista '{{PHONE}}'."
+    },
+    "errors": {
+      "required": "See väli on vaja täita.",
+      "requiredName": "Kirjuta palun oma nimi.",
+      "requiredPhone": "Kirjuta palun telefoninumber, et saaksime ühendust võtta.",
+      "requiredMessage": "Kirjuta paari sõnaga, mida on vaja teha.",
+      "email": "E-posti aadress ei tundu õige. Kontrolli palun üle.",
+      "phone": "Telefoninumber ei tundu õige. Kontrolli palun üle.",
+      "fileTooBig": "See pilt on liiga suur. Proovi mõnda teist.",
+      "fileType": "Seda faili ei saa lisada. Lisada saab ainult pilte: JPG, PNG, HEIC või WebP.",
+      "tooManyFiles": "Korraga saab lisada kuni '{{MAX_UPLOAD_COUNT}}' pilti.",
+      "network": "Saatmine ei õnnestunud. Proovi natukese aja pärast uuesti või helista '{{PHONE}}'.",
+      "server": "Midagi läks meie poolel viltu ja päring ei jõudnud kohale. Proovi uuesti või helista '{{PHONE}}'."
+    }
+  },
+  "footer": {
+    "company": "MPH Meistrid OÜ",
+    "regCode": "Registrikood 17317439",
+    "vat": "KMKR nr '{{VAT_NUMBER}}'",
+    "tagline": "Ehitus-, remondi- ja siseviimistlustööd '{{REGION_ET}}'",
+    "phone": "'{{PHONE}}'",
+    "email": "'{{EMAIL}}'",
+    "privacy": "Päringuvormis jagatud andmeid kasutame ainult pakkumise tegemiseks ja sinuga ühenduse võtmiseks. Kolmandatele isikutele me neid ei anna.",
+    "copyright": "© {year} MPH Meistrid OÜ",
+    "navHeading": "Lehed",
+    "contactHeading": "Kontakt",
+    "backToTop": "Üles"
+  },
+  "common": {
+    "ctaQuote": "Küsi pakkumist",
+    "ctaCall": "Helista",
+    "close": "Sulge",
+    "optional": "ei ole kohustuslik",
+    "required": "kohustuslik",
+    "notFound": {
+      "title": "Sellist lehte ei ole",
+      "body": "Leht on ära kolinud või seda ei ole kunagi olnud. Mine tagasi esilehele või võta meiega ühendust.",
+      "backHome": "Tagasi esilehele"
+    },
+    "error": {
+      "title": "Midagi läks viltu",
+      "body": "Proovi leht uuesti laadida. Kui see ei aita, helista või kirjuta meile.",
+      "retry": "Proovi uuesti"
+    }
+  },
+  "a11y": {
+    "skipToContent": "Liigu sisu juurde",
+    "langSwitchLabel": "Vaheta keelt",
+    "menuOpen": "Ava menüü",
+    "menuClose": "Sulge menüü",
+    "lightboxOpen": "Ava pildid",
+    "lightboxClose": "Sulge pildid",
+    "lightboxNext": "Järgmine pilt",
+    "lightboxPrevious": "Eelmine pilt",
+    "imageCounter": "Pilt {current} / {total}",
+    "call": "Helista MPH Meistridele",
+    "mainNav": "Peamenüü"
+  }
+}

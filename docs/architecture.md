@@ -1,0 +1,142 @@
+# MPH Meistrid — Architecture
+
+One-page bilingual (ET/RU) marketing site with a deliberately tiny admin area.
+Guiding rule from the brief: **do not overengineer**. Every decision below picks the
+boring option unless the simple one is actually broken.
+
+## Stack
+
+| Concern | Choice | Why |
+|---|---|---|
+| Framework | Next.js 16.3.2, App Router, React 19.2.8 | Matches the DIIP Solutions house stack. |
+| Language | TypeScript, `strict` | — |
+| Styling | Tailwind CSS v4 (CSS-first `@theme`) | Required by the scope. No `tailwind.config.js` in v4. |
+| i18n | `next-intl` v4, `localePrefix: 'as-needed'` | ET at `/`, RU at `/ru`. Same config as diipsolutions.eu. |
+| Hosting | Vercel (DIIP org `team_PmRM0pOikwaHRqxBQRSAfqFE`) | Existing DIIP infrastructure. |
+| Media + data | Cloudflare R2 | Required by the scope. |
+| Mail | Resend (send) + Cloudflare Email Routing (receive) | See "Email" below. |
+| Spam | Cloudflare Turnstile | Same as DIIP Solutions. |
+
+## Why JSON in R2 and not a database
+
+There is one administrator, low traffic, a handful of projects and infrequent edits.
+Vercel functions have no persistent disk, so SQLite-on-disk is not an option. A hosted
+Postgres would add an account, a connection pool, a migration story and a monthly bill to
+a EUR 200 site.
+
+So content lives as two JSON objects in the same R2 bucket as the photos:
+
+```
+bucket: mph-meistrid-data    (private)
+  data/projects.json     { version, projects: Project[] }
+  data/pricing.json      { version, items: PriceItem[] }
+
+bucket: mph-meistrid-media   (public, custom domain)
+  media/projects/{projectId}/{imageId}-{width}.webp
+```
+
+**Two buckets, not one.** R2 grants public access per bucket rather than per prefix. The
+photos have to be publicly readable off a CDN domain; `projects.json` must not be, because
+it contains unpublished drafts that the public site deliberately filters out. One bucket
+would have published those drafts at a guessable URL.
+
+Trade-offs accepted, and why they are fine here:
+
+- **Whole-file read-modify-write.** Two simultaneous writes could clobber each other. Writes
+  are serialised per key within a server instance by a promise chain, and use a conditional
+  `If-Match` PUT on the object's ETag, which is what makes it correct across instances too —
+  a lost update is rejected and retried with backoff rather than silently discarded.
+- **No querying.** The whole file is a few kilobytes. It is read once per render and cached.
+- **No migrations.** Each file carries a `version` field; `src/lib/store.ts` normalises
+  older shapes on read.
+
+If the portfolio ever outgrows this — realistically a few hundred projects — the swap is
+to replace `src/lib/store.ts` and nothing else. That module is the only thing that knows
+where content lives.
+
+## Caching and revalidation
+
+Public pages are statically rendered and read the JSON at generation time. React's `cache()`
+dedupes the R2 call within a single render, and admin writes call
+`revalidatePath('/', 'layout')`, so the public site updates on the next request after a save
+with no rebuild.
+
+Deliberately **not** used:
+
+- **`use cache`.** It requires `cacheComponents: true`, which turns `export const dynamic`,
+  `revalidate`, `fetchCache` and `dynamicParams` into build errors and makes `new Date()`
+  throw during prerender. That is a whole-app rendering-model change to buy caching this
+  site does not need.
+- **`revalidateTag`.** It takes a mandatory second argument in Next 16
+  (`revalidateTag(tag, profile)`), and with a stale-while-revalidate profile it deliberately
+  skips the immediate re-render — which is exactly the wrong behaviour for an administrator
+  who has just pressed Save and wants to see the result.
+
+See `docs/next16-notes.md` for the full API surface and the traps in it.
+
+## Images
+
+Uploads are processed twice, on purpose:
+
+1. **In the browser**, before upload: decode, downscale to max 2400px, re-encode JPEG q0.82.
+   This is what makes uploading eight photos over mobile data from a building site
+   tolerable, and it side-steps HEIC entirely — the browser decodes the iPhone's HEIC
+   natively and we ship a JPEG. No `libheif`, no fragile server dependency.
+2. **On the server**, with `sharp`: generate WebP at 400 / 800 / 1200 / 1600 / 2000 px plus a
+   tiny base64 blur placeholder, and record intrinsic dimensions so nothing shifts on load.
+
+Serving uses `next/image` with a **custom loader** that maps a requested width to the
+nearest pre-generated variant on the R2 public domain. That keeps lazy loading, the blur-up
+and CLS protection, while spending nothing on Vercel image optimisation — the files are
+already optimised and sit behind the Cloudflare CDN.
+
+Deleting a project deletes its `media/projects/{id}/` prefix.
+
+## Auth
+
+One administrator. No registration, no password reset, no roles.
+
+- `ADMIN_PASSWORD_HASH` holds a scrypt hash (`scrypt$N$r$p$salt$hash`), generated by
+  `npm run hash-password`. The plaintext password never exists in the repo or in an env var.
+- Session is a cookie `mph_session` containing `base64url(payload).hmacSHA256`, signed with
+  `AUTH_SECRET`. HttpOnly, `Secure` in production, `SameSite=Lax`, `Path=/`, 7-day expiry.
+- `SameSite=Lax` is the CSRF defence for state-changing POSTs; every mutating handler also
+  checks the `Origin` header against the site origin.
+- Login attempts are rate-limited in memory per IP. Per-instance only — documented, and
+  adequate for a single-admin site.
+- `src/proxy.ts` does an optimistic cookie check to redirect `/admin` early. It is a UX
+  shortcut, not the authorisation boundary: every admin page and every mutating route
+  verifies the signature server-side.
+
+## Email
+
+Cloudflare Email Routing is **inbound only** — it forwards `info@mphmeistrid.ee` to the
+company's real mailbox, free, and should be set up. It has no send API, and the old
+Workers + MailChannels free-send route was withdrawn in 2024. So the quote form sends
+through Resend, with the customer's optional photos attached to the message after the same
+client-side downscale used by the admin. Nothing is stored, so there is nothing to clean up.
+
+## Routes
+
+```
+/                      ET landing page
+/ru                    RU landing page
+/tood/[slug]           ET project page   (SEO-addressable; the grid also opens a lightbox)
+/ru/tood/[slug]        RU project page
+/admin                 dashboard
+/admin/login
+/admin/tood/uus        add project
+/admin/tood/[id]       edit project
+/admin/hinnad          pricing editor
+/api/...               upload, save, delete, login, logout, quote
+/sitemap.xml /robots.txt /opengraph-image
+```
+
+The landing page stays a single page; project pages exist because they are cheap and give
+Google something to index per job.
+
+## Content ownership
+
+- Marketing copy, services, contacts: `src/content/` and `src/i18n/messages/*.json`,
+  edited by a developer. Placeholders are `{{LIKE_THIS}}` and listed in `docs/CONTENT.md`.
+- Projects and prices: edited by the client in `/admin`, stored in R2.
