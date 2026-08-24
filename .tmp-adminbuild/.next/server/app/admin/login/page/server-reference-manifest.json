@@ -1,0 +1,27 @@
+{
+  "node": {
+    "008a21bc3a315cc2f73b7768063cdfb7f7536efb7c": {
+      "workers": {
+        "app/admin/login/page": {
+          "moduleId": 7113,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "logoutAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "607af9f75aa5e4b7d6341bda6cae54bae3fb83c451": {
+      "workers": {
+        "app/admin/login/page": {
+          "moduleId": 7113,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "loginAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    }
+  },
+  "edge": {}
+}

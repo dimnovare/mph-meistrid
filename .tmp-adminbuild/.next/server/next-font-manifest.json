@@ -1,0 +1,47 @@
+{
+  "app": {
+    "[project]/.tmp-adminbuild/src/app/admin/hinnad/page": [
+      "static/media/16d91c780434f2ce-s.p.0shchh0jtv0ui.woff2",
+      "static/media/ef79401ea952b7f0-s.p.3t69pc-7h-e66.woff2",
+      "static/media/8800dfc60902df36-s.p.3nasnllvo8ig4.woff2",
+      "static/media/26f284dcc38c84c0-s.p.3hlisc-pwq13z.woff2",
+      "static/media/6a5386fd6038edbe-s.p.3_z45zcoc-xoz.woff2",
+      "static/media/051742360c26797e-s.p.1bkzbscqrt8rl.woff2"
+    ],
+    "[project]/.tmp-adminbuild/src/app/admin/login/page": [
+      "static/media/16d91c780434f2ce-s.p.0shchh0jtv0ui.woff2",
+      "static/media/ef79401ea952b7f0-s.p.3t69pc-7h-e66.woff2",
+      "static/media/8800dfc60902df36-s.p.3nasnllvo8ig4.woff2",
+      "static/media/26f284dcc38c84c0-s.p.3hlisc-pwq13z.woff2",
+      "static/media/6a5386fd6038edbe-s.p.3_z45zcoc-xoz.woff2",
+      "static/media/051742360c26797e-s.p.1bkzbscqrt8rl.woff2"
+    ],
+    "[project]/.tmp-adminbuild/src/app/admin/page": [
+      "static/media/16d91c780434f2ce-s.p.0shchh0jtv0ui.woff2",
+      "static/media/ef79401ea952b7f0-s.p.3t69pc-7h-e66.woff2",
+      "static/media/8800dfc60902df36-s.p.3nasnllvo8ig4.woff2",
+      "static/media/26f284dcc38c84c0-s.p.3hlisc-pwq13z.woff2",
+      "static/media/6a5386fd6038edbe-s.p.3_z45zcoc-xoz.woff2",
+      "static/media/051742360c26797e-s.p.1bkzbscqrt8rl.woff2"
+    ],
+    "[project]/.tmp-adminbuild/src/app/admin/tood/[id]/page": [
+      "static/media/16d91c780434f2ce-s.p.0shchh0jtv0ui.woff2",
+      "static/media/ef79401ea952b7f0-s.p.3t69pc-7h-e66.woff2",
+      "static/media/8800dfc60902df36-s.p.3nasnllvo8ig4.woff2",
+      "static/media/26f284dcc38c84c0-s.p.3hlisc-pwq13z.woff2",
+      "static/media/6a5386fd6038edbe-s.p.3_z45zcoc-xoz.woff2",
+      "static/media/051742360c26797e-s.p.1bkzbscqrt8rl.woff2"
+    ],
+    "[project]/.tmp-adminbuild/src/app/admin/tood/uus/page": [
+      "static/media/16d91c780434f2ce-s.p.0shchh0jtv0ui.woff2",
+      "static/media/ef79401ea952b7f0-s.p.3t69pc-7h-e66.woff2",
+      "static/media/8800dfc60902df36-s.p.3nasnllvo8ig4.woff2",
+      "static/media/26f284dcc38c84c0-s.p.3hlisc-pwq13z.woff2",
+      "static/media/6a5386fd6038edbe-s.p.3_z45zcoc-xoz.woff2",
+      "static/media/051742360c26797e-s.p.1bkzbscqrt8rl.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

@@ -1,0 +1,22 @@
+import type { MetadataRoute } from 'next';
+
+import { NOINDEX, SITE_URL } from '@/lib/env';
+
+export default function robots(): MetadataRoute.Robots {
+  // Demo and preview deployments are closed to crawlers entirely — see NOINDEX in env.ts.
+  if (NOINDEX) {
+    return { rules: { userAgent: '*', disallow: '/' } };
+  }
+
+  return {
+    rules: {
+      userAgent: '*',
+      allow: '/',
+      // The admin is behind a login, but keeping it out of the crawl budget and out of
+      // search results costs nothing. Also enforced by an X-Robots-Tag header.
+      disallow: ['/admin', '/admin/', '/api/'],
+    },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
+  };
+}

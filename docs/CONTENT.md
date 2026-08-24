@@ -35,6 +35,7 @@ Kolm asja, mida enne tabeli lugemist teada tasub:
 | `{{PHONE_DISPLAY}}` | Seesama number — teine nimi teises failis | The same number, under its name in the constants file | Nupu- ja lingitekstid | `+372 5123 4567` | `site.ts` |
 | `{{PHONE_E164}}` | Seesama number ilma tühikuteta, et helistamisnupp töötaks | The same number with no spaces, so the tap-to-call link works | „Helista“ nupu link | `+3725123456` | `site.ts` |
 | `{{EMAIL}}` | Avalik e-posti aadress | Public email address | Kontakt, jalus | `info@mphmeistrid.ee` | `et.json`, `ru.json`, `site.ts` |
+| `{{HOURS}}` | Millal te tööl olete — nii, nagu see peab kodulehel kirjas olema. Kui kindlat tööaega ei ole, ütle seda ja me võtame rea ära | Working hours as they should read on the site. If there are no fixed hours, say so and the row is removed | Kontakt → „Tööaeg“ | `E–R 8.00–17.00` | `et.json`, `ru.json` |
 | `{{VAT_NUMBER}}` | KMKR number — **ainult siis, kui ettevõte on käibemaksukohustuslane**. Kui ei ole, ütle seda ja me võtame rea üldse ära | VAT (KMKR) number — only if the company is VAT-registered; otherwise the whole line is removed | Jalus | `EE102345678` | `et.json`, `ru.json` |
 
 **Facebook ja Instagram.** Neid ei ole märgendina kirjas — `site.ts` failis on nende koht

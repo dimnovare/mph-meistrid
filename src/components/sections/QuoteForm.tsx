@@ -4,20 +4,38 @@ import Script from 'next/script';
 import { useTranslations } from 'next-intl';
 import { useActionState, useEffect, useRef, useState, type ChangeEvent } from 'react';
 
-import { Button } from '@/components/ui/Button';
-import { Field, Input, Textarea } from '@/components/ui/Field';
+import { Field } from '@/components/ui/Field';
 import { isPlaceholder, site } from '@/content/site';
-import { submitQuoteAction } from '@/app/quote-action';
+import { submitQuoteAction, type QuoteState } from '@/app/quote-action';
 import { FileTooLargeError, prepareForUpload } from '@/lib/client-image';
 import { MAX_QUOTE_PHOTOS } from '@/lib/quote-limits';
 
+import { actionClasses, FIELD_CONTROL, INK_PANEL, UNDERLINE_LINK, UNDERLINE_RULE } from './styles';
+import { Bricks, GLYPH_THREE } from './Bricks';
+
 /**
- * Quote form — design-system.md §7.10.
+ * Quote form — the prototype's Kontakt form, in the codebase's server-action plumbing.
  *
- * The only client component on the landing page, and it needs the boundary for four things
+ * The only client component on the landing page, and it needs the boundary for five things
  * that cannot happen on the server: downscaling photos in the browser before they are sent,
- * previewing them from object URLs, driving the Turnstile widget, and holding the pending
- * state of the Server Action.
+ * previewing them from object URLs, driving the Turnstile widget, holding the pending state
+ * of the Server Action, and remembering the sender's name for the confirmation panel.
+ *
+ * ── WHERE THIS DIVERGES FROM THE PROTOTYPE, AND WHY ─────────────────────────
+ * The prototype's four fields are Nimi / Telefon või e-post / Objekti aadress / Kirjeldus.
+ * The Server Action in `src/app/quote-action.ts` validates `name`, `phone`, `email`,
+ * `message` and a honeypot, and that contract is not ours to change here — so the fields
+ * are the action's, and the placeholders are the catalogue's. The address is folded into the
+ * description field's own prompt rather than added as a field the server would discard.
+ *
+ * The prototype labels its fields with placeholders only. A placeholder disappears the
+ * moment someone types, which on a phone means the visitor can no longer see what the field
+ * was, so the real `<label htmlFor>` from `@/components/ui/Field` stays. What it does not
+ * get is Field's `required` marker: that asterisk is painted `accent-strong`, and it would
+ * be the only orange left on a site whose accent family the 5a identity retired. `required`
+ * and `aria-required` stay on the controls themselves, so browsers and assistive technology
+ * still know and still enforce.
+ * ────────────────────────────────────────────────────────────────────────────
  */
 
 /*
@@ -57,6 +75,20 @@ export function QuoteForm() {
   const [photos, setPhotos] = useState<Attachment[]>([]);
   const [photoError, setPhotoError] = useState<string | null>(null);
 
+  /*
+   * The confirmation panel greets the sender by name, and the Server Action's result carries
+   * only `{ ok: true }` — so the name is captured on the way out, from the FormData the
+   * action is about to receive.
+   *
+   * "Send another enquiry" is the other half: the action state stays `ok` for good, so
+   * something local has to put the form back. What is stored is the dismissed *result
+   * object*, not a boolean — `useActionState` hands back a fresh object on every submit, so
+   * an identity check reopens the panel after the next send without an effect to reset a
+   * flag (which the React compiler rightly rejects as a cascading render).
+   */
+  const [sender, setSender] = useState('');
+  const [dismissedResult, setDismissedResult] = useState<QuoteState | null>(null);
+
   // Read inside the unmount cleanup, which would otherwise close over the empty first render.
   // Kept in sync from an effect rather than during render: a ref written while rendering is
   // not a legal React value read.
@@ -75,6 +107,8 @@ export function QuoteForm() {
     MAX_UPLOAD_COUNT: String(MAX_QUOTE_PHOTOS),
   };
 
+  const showSuccess = Boolean(state.ok) && state !== dismissedResult;
+
   useEffect(() => {
     photosRef.current = photos;
   }, [photos]);
@@ -85,8 +119,8 @@ export function QuoteForm() {
     };
   }, []);
 
-  // §7.10: on submit failure, move focus to the first invalid field. Without this a phone
-  // user is left staring at the submit button with the error scrolled off screen.
+  // On submit failure, move focus to the first invalid field. Without this a phone user is
+  // left staring at the submit button with the error scrolled off screen.
   useEffect(() => {
     if (!state.field) return;
     document.getElementById(`quote-${state.field}`)?.focus();
@@ -99,10 +133,9 @@ export function QuoteForm() {
     (window as unknown as { turnstile?: { reset: () => void } }).turnstile?.reset();
   }, [state, siteKey]);
 
-  // The previews leave the screen when the form is replaced by the thank-you block, so their
-  // object URLs are released there and then. The state array is left alone — revoking twice
-  // (here and again on unmount) is a no-op, and clearing state from an effect would only
-  // cause an extra render nobody sees.
+  // The previews leave the screen when the form is replaced by the confirmation panel, so
+  // their object URLs are released there and then. Revoking twice (here and again on
+  // unmount) is a no-op.
   useEffect(() => {
     if (!state.ok) return;
     for (const photo of photosRef.current) URL.revokeObjectURL(photo.previewUrl);
@@ -123,7 +156,8 @@ export function QuoteForm() {
     }
 
     const accepted: Attachment[] = [];
-    let failure: string | null = picked.length > room ? fill(t('errors.tooManyFiles'), tokens) : null;
+    let failure: string | null =
+      picked.length > room ? fill(t('errors.tooManyFiles'), tokens) : null;
 
     for (const file of picked.slice(0, room)) {
       try {
@@ -162,77 +196,87 @@ export function QuoteForm() {
 
   return (
     <div>
-      <h3 className="font-display text-h3">{t('heading')}</h3>
-      <p className="mt-3 text-body text-fg-muted">{t('intro')}</p>
-
       {/*
         Both live regions are in the DOM from first render, empty. A region inserted at the
         same moment it gains content is announced unreliably; one that is already there is
         announced every time.
       */}
       <div role="status" aria-live="polite">
-        {state.ok ? (
-          <div className="mt-6 rounded-control border-l-[3px] border-success bg-success-soft px-5 py-4">
-            <p className="flex items-start gap-3 font-sans font-semibold text-fg-strong">
-              <CheckIcon />
-              {t('success.title')}
-            </p>
-            <p className="mt-2 text-small text-fg">{fill(t('success.body'), tokens)}</p>
+        {showSuccess ? (
+          <div className={INK_PANEL}>
+            <Bricks courses={GLYPH_THREE} height={20} joint={2} className="w-[2.125rem] text-ink" />
+            <p className="font-display text-h3 text-fg-strong">{t('success.title')}</p>
+            <p className="text-small text-fg-muted">{t('success.body', { name: sender })}</p>
+            <button
+              type="button"
+              onClick={() => {
+                setDismissedResult(state);
+                setPhotos([]);
+                setPhotoError(null);
+              }}
+              className={UNDERLINE_LINK}
+            >
+              <span className={UNDERLINE_RULE}>{t('success.again')}</span>
+            </button>
           </div>
         ) : null}
       </div>
 
       <div role="alert">
         {formError ? (
-          <div className="mt-6 rounded-control border-l-[3px] border-danger bg-danger-soft px-5 py-4">
-            <p className="flex items-start gap-3 text-small text-fg-strong">
-              <WarningIcon />
-              {formError}
-            </p>
-          </div>
+          <p className="border-l-[3px] border-danger bg-danger-soft px-5 py-4 text-small text-fg-strong">
+            {formError}
+          </p>
         ) : null}
       </div>
 
-      {state.ok ? null : (
+      {showSuccess ? null : (
         <form
           // `formData` is built from the form, then the downscaled blobs are appended. The
           // file input itself is deliberately unnamed: if it were named, the browser would
           // also serialise the *originals* and blow the 4 MB Server Action body limit.
           action={(formData) => {
+            setSender(String(formData.get('name') ?? '').trim());
             for (const photo of photos) formData.append('photos', photo.blob, photo.filename);
             formAction(formData);
           }}
-          className="relative mt-8 flex flex-col gap-6"
+          className="relative flex flex-col gap-5"
         >
-          <Field id="quote-name" label={t('name.label')} required error={fieldError('name')}>
-            <Input
-              id="quote-name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              placeholder={t('name.placeholder')}
-              required
-              aria-required="true"
-              invalid={Boolean(fieldError('name'))}
-              aria-describedby={fieldError('name') ? 'quote-name-error' : undefined}
-            />
-          </Field>
+          {/* Two-up from 480px, exactly as the prototype: name and the contact detail are
+              both short, and pairing them keeps the form to four visible rows. */}
+          <div className="grid grid-cols-1 gap-5 min-[45rem]:grid-cols-2">
+            <Field id="quote-name" label={t('name.label')} error={fieldError('name')}>
+              <input
+                id="quote-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder={t('name.placeholder')}
+                required
+                aria-required="true"
+                aria-invalid={Boolean(fieldError('name')) || undefined}
+                aria-describedby={fieldError('name') ? 'quote-name-error' : undefined}
+                className={`${FIELD_CONTROL} h-control`}
+              />
+            </Field>
 
-          <Field id="quote-phone" label={t('phone.label')} required error={fieldError('phone')}>
-            {/* `type="tel"` + `inputmode` is what makes a phone show the dialling keypad. */}
-            <Input
-              id="quote-phone"
-              name="phone"
-              type="tel"
-              inputMode="tel"
-              autoComplete="tel"
-              placeholder={t('phone.placeholder')}
-              required
-              aria-required="true"
-              invalid={Boolean(fieldError('phone'))}
-              aria-describedby={fieldError('phone') ? 'quote-phone-error' : undefined}
-            />
-          </Field>
+            <Field id="quote-phone" label={t('phone.label')} error={fieldError('phone')}>
+              {/* `type="tel"` plus `inputMode` is what makes a phone show the dialling pad. */}
+              <input
+                id="quote-phone"
+                name="phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel"
+                placeholder={t('phone.placeholder')}
+                required
+                aria-required="true"
+                aria-invalid={Boolean(fieldError('phone')) || undefined}
+                aria-describedby={fieldError('phone') ? 'quote-phone-error' : undefined}
+                className={`${FIELD_CONTROL} h-control`}
+              />
+            </Field>
+          </div>
 
           <Field
             id="quote-email"
@@ -240,26 +284,26 @@ export function QuoteForm() {
             hint={t('email.optional')}
             error={fieldError('email')}
           >
-            <Input
+            <input
               id="quote-email"
               name="email"
               type="email"
               inputMode="email"
               autoComplete="email"
               placeholder={t('email.placeholder')}
-              invalid={Boolean(fieldError('email'))}
+              aria-invalid={Boolean(fieldError('email')) || undefined}
               aria-describedby={fieldError('email') ? 'quote-email-error' : undefined}
+              className={`${FIELD_CONTROL} h-control`}
             />
           </Field>
 
           <Field id="quote-message" label={t('message.label')}>
-            {/* §7.10: min-height 132px. */}
-            <Textarea
+            <textarea
               id="quote-message"
               name="message"
               rows={5}
               placeholder={t('message.placeholder')}
-              className="min-h-33"
+              className={`${FIELD_CONTROL} min-h-33 resize-y py-3.5 leading-normal`}
             />
           </Field>
 
@@ -289,9 +333,7 @@ export function QuoteForm() {
               <label
                 htmlFor="quote-photos"
                 className={
-                  'inline-flex h-control cursor-pointer items-center justify-center gap-2.5 ' +
-                  'rounded-control border border-line-strong bg-page px-6 font-display ' +
-                  'text-body font-bold text-fg-strong transition-colors hover:bg-surface-2 ' +
+                  `${actionClasses('outline')} cursor-pointer ` +
                   // The ring has to be drawn here because the real control is off-screen.
                   // Written long-hand so it matches the 3px ink ring in globals.css exactly.
                   'peer-focus-visible:[outline:3px_solid_var(--color-focus)] ' +
@@ -360,10 +402,14 @@ export function QuoteForm() {
             </>
           ) : null}
 
-          <div className="flex flex-col gap-4">
-            <Button type="submit" variant="primary" disabled={isPending} className="w-full sm:w-auto">
+          <div className="flex flex-col items-start gap-4">
+            <button
+              type="submit"
+              disabled={isPending}
+              className={`${actionClasses('ink')} w-full sm:w-auto`}
+            >
               {isPending ? t('submitting') : t('submit')}
-            </Button>
+            </button>
             <p className="text-small text-fg-muted">{t('privacyNote')}</p>
           </div>
         </form>
@@ -372,43 +418,7 @@ export function QuoteForm() {
   );
 }
 
-/* ------------------------------------------------------------------ glyphs */
-/* Inlined rather than an icon library: three shapes, zero payload, `currentColor`. */
-
-function CheckIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="mt-0.5 h-5 w-5 shrink-0 text-success"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="square"
-    >
-      <path d="M4 12.5 9.5 18 20 6.5" />
-    </svg>
-  );
-}
-
-function WarningIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="mt-0.5 h-5 w-5 shrink-0 text-danger"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="square"
-    >
-      <path d="M12 3 22 20H2L12 3Z" />
-      <path d="M12 10v5" />
-      <path d="M12 17.5v.5" />
-    </svg>
-  );
-}
-
+/** Inlined rather than pulled from an icon library: one shape, `currentColor`, no payload. */
 function CloseIcon() {
   return (
     <svg

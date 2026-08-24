@@ -1,0 +1,115 @@
+{
+  "node": {
+    "008a21bc3a315cc2f73b7768063cdfb7f7536efb7c": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "logoutAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "00f202af958c0c7def5c8a3cc577231b441fcd7704": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "createDraftAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "401d3b68f3ae7610b040b0303700306fda593171ca": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "setCoverAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "4071cc474bc82f759e470796582aab0dd114048419": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "deleteImageAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "4084129adda6430e1b2ef8f7aa67c561e3a8ca1434": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "reorderProjectsAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "60416b73f87061aaf5d42ee618b588c2d7d8dc06ab": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "reorderImagesAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "604b5a24eec1bd08ae2b311f7765b721b81f2d9d53": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "savePricingAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "60682a7bc71bd12cdf87521ae3994803c43e614b9c": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "deleteProjectAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "607af9f75aa5e4b7d6341bda6cae54bae3fb83c451": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "loginAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    },
+    "609e4d1d90d7e87f2a9498e590b0842c9155164dbf": {
+      "workers": {
+        "app/admin/tood/uus/page": {
+          "moduleId": 89898,
+          "async": false,
+          "codeHash": null
+        }
+      },
+      "exportedName": "saveProjectAction",
+      "filename": ".tmp-adminbuild/src/app/admin/actions.ts"
+    }
+  },
+  "edge": {}
+}

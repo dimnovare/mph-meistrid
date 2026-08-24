@@ -88,26 +88,29 @@ export function Logo({ variant = 'horizontal', height = 28, onInk = false, class
 /* ────────────────────────────── the recipe ─────────────────────────────── */
 
 /**
- * Advance of "MPH" set in Lexend 800 at −0.05em, as a multiple of the font size. The slab is
+ * Advance of "MPH" set in Onest 800 at −0.05em, as a multiple of the font size. The slab is
  * this plus an overhang at each end, so it is the one number that decides whether the
  * overhang really is the 0.146× the recipe asks for.
  *
- * Measured off the live face (2.197em), NOT taken from the delivered logo-primary.svg. That
- * file assumes 2.147em — it sets the wordmark at x=14.6 in a 243.9-wide box, which only adds
- * up if "MPH" advances 214.7. It advances 219.7, so in the delivered artwork the whole 5px
- * shortfall lands on the right: 14.6 of overhang on the left against 9.6 on the right, and a
- * lockup that leans. The board-5a prototype centres the wordmark in a slab stretched 14px
- * past it at each end, which is the stated intent, so that is what is built here — with the
- * real advance, so both overhangs are 0.146× exactly.
+ * Taken from the corrected artwork: logo-primary.svg is a 237.7-wide box at font-size 100
+ * with 14.6 of overhang each side, so the wordmark advances 237.7 − 29.2 = 208.5.
+ *
+ * This was 2.197 while the identity was set in Lexend, and the delivered files at that point
+ * placed the wordmark by its origin x rather than by its ink, which leant it 40px right of
+ * the slab centre in a 1046px render. Both are now fixed upstream — the artwork centres with
+ * `text-anchor="middle"` and a dx of half the trailing letter-spacing, and the handoff
+ * records the rule. Measured on the re-render: 61 left against 62 right, i.e. centred.
  */
-const MPH_ADVANCE = 2.197;
+const MPH_ADVANCE = 2.085;
 /**
- * Advance of "MPH MEISTRID" at −0.01em — 8.105em — expressed against the *tile* size rather
- * than the font size, because that is what the horizontal lockup is measured in and the
- * wordmark is set at half the tile: 8.105 × 0.5. Same story as above: logo-horizontal.svg's
- * 176-wide box assumes 4.5 and leaves ~13 units of air off the end of the wordmark.
+ * Advance of "MPH MEISTRID" expressed against the *tile* size rather than the font size,
+ * because that is what the horizontal lockup is measured in: logo-horizontal.svg is 151 wide
+ * on a 30 tile with an 11 gap, so the wordmark box is 110 = 3.667 tiles.
+ *
+ * Was 4.05 against the old artwork's 176-wide box, which left ~13 units of dead air off the
+ * end of the wordmark. Also corrected upstream.
  */
-const LOCKUP_ADVANCE = 8.105 * 0.5;
+const LOCKUP_ADVANCE = 3.6667;
 
 /** Joints thinner than this stop reading as joints and the courses merge into a bar. */
 const MIN_JOINT = 1.5;
@@ -118,7 +121,10 @@ const COURSE_HEIGHT = 0.115;
 const JOINT = 0.021;
 const MONO_SIZE = 0.146; /* MEISTRID */
 const MONO_TRACK = 0.4;
-const CAP_TO_BASELINE = 0.7; /* top of the box to the MPH baseline */
+/* Top of the box to the MPH baseline. Onest's cap height differs from Lexend's, which is
+   why this is 0.72 and not the 0.70 the first cut used: the corrected artwork is 139.6 tall
+   at font-size 100, and 0.72 + 0.094 + 0.31 + 2×0.115 + 2×0.021 = 1.396. */
+const CAP_TO_BASELINE = 0.72;
 const BASELINE_TO_SLAB = 0.094;
 /** Everything except the two joints, as a multiple of the font size. */
 const STACK = CAP_TO_BASELINE + BASELINE_TO_SLAB + SLAB_HEIGHT + 2 * COURSE_HEIGHT;

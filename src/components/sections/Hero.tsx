@@ -1,149 +1,140 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
-import { Button } from '@/components/ui/Button';
-import { Container } from '@/components/ui/Container';
-import { isPlaceholder, telHref } from '@/content/site';
+import { ProjectImage } from '@/components/ui/ProjectImage';
+import { Section } from '@/components/ui/Container';
+import { site } from '@/content/site';
+import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
+import { publishedProjects } from '@/lib/store';
+import { t as localized } from '@/lib/types';
+
+import { Bricks, RUNNING_BOND } from './Bricks';
+import { actionClasses, FRAME, MONO_KICKER, MONO_LABEL, UNDERLINE_LINK, UNDERLINE_RULE } from './styles';
 
 /**
- * Hero — design-system.md §7.2.
+ * Hero — the prototype's opening grid: kicker, h1, lead, ink CTA + text link, brick divider
+ * on the left; a photograph and its mono caption row on the right. One column below 720px.
  *
- * ── NO HERO PHOTOGRAPH YET ──────────────────────────────────────────────────
- * The client has not supplied one and a stock photo of somebody else's building site is
- * worse than none: it is the first thing a visitor sees and the first thing that tells them
- * whether this is a real company. So the hero is built to work **both** ways.
+ * ── WHERE THE PHOTOGRAPH COMES FROM ─────────────────────────────────────────
+ * There is no supplied hero image and there will not be one: a stock photo of somebody
+ * else's building site is the first thing a visitor sees and the fastest way to make a real
+ * company look fake. So the slot is filled by the company's own most recently added job —
+ * which is exactly what the prototype's caption, "VIIMANE OBJEKT", says it is — and the
+ * whole plate links through to that job.
  *
- * With `HERO_IMAGE = null` it renders as a solid `ink` slab. That is not a fallback, it is
- * the third ink band the system already owns (§2) — same scrim colour, same `.on-ink`
- * context, same type — so the page still opens on a hard, deliberate block rather than on a
- * grey box with a broken-image icon in it.
+ * Newest by `createdAt`, not first in display order: display order is the client's
+ * arrangement of the grid below and says nothing about recency, and the caption would then
+ * be making a claim the data does not support.
  *
- * To add the real photograph later: drop the file in `public/`, fill in the object below
- * with its real intrinsic pixel dimensions (wrong values cause layout shift), and nothing
- * else changes — the scrim, the LCP preload and the layout are already wired.
+ * On day one there are no projects, so the right column is not rendered at all and the hero
+ * is a single column. That is the state a reviewer sees first, and it is why the copy, the
+ * CTA pair and the brick divider all sit in the left column rather than straddling both.
  * ────────────────────────────────────────────────────────────────────────────
+ *
+ * The photo box is width-driven — `aspect-ratio` plus a `max-height` cap, never a fixed
+ * height. A fixed height makes the slot derive its width from that height and overflow the
+ * column on a narrow screen, which is the specific failure the handoff calls out.
  */
-type HeroImage = {
-  /** Path under `public/`, or an absolute CDN URL. */
-  src: string;
-  /** Intrinsic pixel size of the file. Used only for the ratio. */
-  width: number;
-  height: number;
-  /** Optional tiny base64 placeholder. Omit rather than invent one. */
-  blurDataURL?: string;
-};
-
-const HERO_IMAGE: HeroImage | null = null;
 
 /**
- * §6.2. One gradient, applied over the photo rather than baked into it, so the same file
- * stays reusable. Effective α is ≥0.70 across the bottom 45% where the text sits, which is
- * ≥6.9:1 for white text even over a blown-out white wall — the realistic worst case for an
- * interior phone photo, and comfortably above the 0.62 floor computed in §3.4.
+ * The right column is ~1fr of a 1.05fr/1fr grid inside the 1200px frame less the 64px
+ * padding and the 64px gap: (1072 − 64) / 2.05 ≈ 492px. Below 720px it is the full width.
  */
-const SCRIM =
-  'linear-gradient(to top, rgb(22 19 15 / 0.88) 0%, rgb(22 19 15 / 0.70) 45%, ' +
-  'rgb(22 19 15 / 0.34) 75%, rgb(22 19 15 / 0.18) 100%)';
+const HERO_SIZES = '(min-width: 45rem) 492px, 100vw';
 
 export async function Hero({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: 'hero' });
-  const tc = await getTranslations({ locale, namespace: 'contact' });
 
-  const tel = telHref();
-  const region = tc('regionValue');
-
-  // Company name, registry code and service region (§7.2). Composed from existing keys —
-  // the region is dropped while it is still an unreplaced placeholder rather than printed
-  // into the page's most prominent block.
-  const trust = [
-    tc('companyValue'),
-    `${tc('regCodeLabel')} ${tc('regCodeValue')}`,
-    isPlaceholder(region) ? null : region,
-  ].filter((part): part is string => part !== null);
+  const projects = await publishedProjects();
+  const newest = [...projects]
+    .filter((project) => project.coverImageId !== null)
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
+  const cover = newest?.images.find((image) => image.id === newest.coverImageId) ?? null;
 
   return (
-    <section
-      aria-labelledby="hero-heading"
-      // `svh` not `vh`: on a phone `vh` is measured against the *expanded* viewport, so the
-      // browser chrome eats the bottom of the hero on first paint.
-      className={
-        'on-ink relative isolate flex min-h-[max(520px,78svh)] flex-col justify-end ' +
-        'bg-ink pt-section-sm text-on-ink lg:min-h-[clamp(560px,72svh,760px)] ' +
-        'lg:justify-center lg:py-section-sm ' +
-        // The fixed mobile call bar sits over the bottom of the viewport, so the hero has to
-        // reserve its height plus the home-indicator inset or the CTA lands underneath it.
-        'pb-[calc(var(--spacing-callbar)+env(safe-area-inset-bottom,0px)+1.5rem)]'
-      }
-    >
-      {HERO_IMAGE ? (
-        <>
-          <Image
-            src={HERO_IMAGE.src}
-            // Decorative: the h1 sitting on top of it carries the meaning, and describing a
-            // photograph we have never seen would be inventing content.
-            alt=""
-            fill
-            // Full-bleed at every breakpoint, so the viewport width is the answer.
-            sizes="100vw"
-            // The LCP element, and the only image on the page allowed to preload.
-            preload
-            fetchPriority="high"
-            className="-z-20 object-cover [object-position:50%_45%]"
-            {...(HERO_IMAGE.blurDataURL
-              ? { placeholder: 'blur' as const, blurDataURL: HERO_IMAGE.blurDataURL }
-              : {})}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 -z-10"
-            style={{ backgroundImage: SCRIM }}
-          />
-        </>
-      ) : null}
+    <Section tone="page" size="sm" labelledBy="hero-heading">
+      <div className={FRAME}>
+        <div
+          className={
+            'grid items-center gap-9 ' +
+            (cover ? 'min-[45rem]:grid-cols-[1.05fr_1fr] min-[45rem]:gap-16' : '')
+          }
+        >
+          <div className="flex flex-col items-start">
+            {/*
+              Three segments, and the third is the registry code — the strongest credential a
+              company registered in September 2025 has, and unarguably true where the
+              delivered "ALATES 2014" was not. The number is interpolated from
+              `site.registryCode` rather than typed into both catalogues, so it lives in one
+              place alongside the rest of the verified company facts.
 
-      <Container>
-        <div className="max-w-copy">
-          {/* The recurring 3px x 32px accent bar (§1). There is no eyebrow string in the
-              catalogue, so the rule sits directly above the h1. */}
-          <span aria-hidden="true" className="mb-6 block h-[3px] w-8 bg-accent" />
+              No `nowrap`, unlike the prototype: "ТАЛЛИНН · ХАРЬЮМАА · РЕГ. 17317439" tracked
+              at .22em is about 390px of mono and a 360px phone has 320px of line. It wraps at
+              the separators, which is why they are surrounded by ordinary spaces — the break
+              lands after HARJUMAA and the code takes its own line, which still reads
+              correctly. Shrinking the type to fit is not an option: 13px is the floor.
+            */}
+            <p className={`${MONO_KICKER} text-fg-muted`}>
+              {t('kicker', { code: site.registryCode })}
+            </p>
 
-          <h1 id="hero-heading" className="text-h1 text-on-ink">
-            {t('title')}
-          </h1>
+            <h1 id="hero-heading" className="mt-6 max-w-copy text-h1">
+              {t('title')}
+            </h1>
 
-          <p className="mt-6 text-lead text-on-ink-muted">{t('subtitle')}</p>
+            <p className="mt-6 max-w-copy text-lead text-fg-muted">{t('subtitle')}</p>
 
-          {/* Stacked and full width below 480px — a thumb-width target beats a tidy row. */}
-          <div className="mt-8 flex flex-col gap-3 min-[480px]:flex-row">
-            <Button
-              as="a"
-              href="#kontakt"
-              variant="primary"
-              className="w-full min-[480px]:w-auto"
-            >
-              {t('ctaPrimary')}
-            </Button>
+            {/* Wraps rather than overflowing: "Запросить предложение" plus "Смотреть работы"
+                is well past a 360px line, and the Russian pair is the reason this row has a
+                row-gap at all. */}
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a href="#kontakt" className={actionClasses('ink')}>
+                {t('ctaPrimary')}
+              </a>
+              <a href="#tood" className={UNDERLINE_LINK}>
+                <span className={UNDERLINE_RULE}>{t('ctaSecondary')}</span>
+              </a>
+            </div>
 
-            {/* Rendered only once a real number exists: `telHref()` returns null while the
-                value is still `{{PHONE_E164}}`, and a dead tel: link is worse than no
-                button — it looks like the phone is broken, not like the site is unfinished. */}
-            {tel ? (
-              <Button
-                as="a"
-                href={tel}
-                variant="secondary"
-                aria-label={t('ctaSecondaryAria')}
-                className="w-full min-[480px]:w-auto"
-              >
-                {t('ctaSecondary')}
-              </Button>
-            ) : null}
+            <Bricks
+              courses={RUNNING_BOND}
+              height={9}
+              joint={2}
+              className="mt-10 w-[13.125rem] max-w-full text-ink"
+            />
           </div>
 
-          <p className="mt-8 text-small text-on-ink-muted">{trust.join(' · ')}</p>
+          {cover ? (
+            <Link href={`/tood/${newest.slug}`} className="group block">
+              <div className="relative aspect-wide max-h-[27.5rem] w-full overflow-hidden bg-surface-2">
+                <ProjectImage
+                  projectId={newest.id}
+                  image={cover}
+                  alt={localized(newest.title, locale)}
+                  sizes={HERO_SIZES}
+                  fill
+                  // The largest element above the fold, so it is the LCP candidate and the
+                  // only image on the page allowed to preload.
+                  preload
+                  className="transition-transform duration-slow ease-out group-hover:scale-[1.03]"
+                />
+                {/* The 1px inset hairline every photo on this site carries: without it a
+                    blown-out white wall bleeds straight into the white page. */}
+                <span aria-hidden="true" className="pointer-events-none absolute inset-0 shadow-frame" />
+              </div>
+
+              <div className="mt-3 flex items-baseline justify-between gap-4">
+                <span className={`${MONO_LABEL} text-fg-muted`}>{t('photoCaption')}</span>
+                {newest.location ? (
+                  <span className={`${MONO_LABEL} truncate uppercase text-fg-muted`}>
+                    {localized(newest.location, locale)}
+                  </span>
+                ) : null}
+              </div>
+            </Link>
+          ) : null}
         </div>
-      </Container>
-    </section>
+      </div>
+    </Section>
   );
 }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 243.9 137.6" fill="#2B2A26">
+
+<defs><mask id="slab"><rect x="0" y="79.4" width="243.9" height="31" fill="#fff"></rect><text x="121.95" y="94.9" fill="#000" font-family="JetBrains Mono, monospace" font-size="14.6" letter-spacing="5.84" text-anchor="middle" dominant-baseline="central" dx="2.92">MEISTRID</text></mask></defs>
+<text x="14.6" y="70" font-family="Onest, sans-serif" font-weight="800" font-size="100" letter-spacing="-5">MPH</text>
+<rect x="0" y="79.4" width="243.9" height="31" mask="url(#slab)"></rect>
+<rect x="0" y="112.5" width="37.12" height="11.5"></rect><rect x="39.22" y="112.5" width="81.67" height="11.5"></rect><rect x="123" y="112.5" width="81.67" height="11.5"></rect><rect x="206.77" y="112.5" width="37.12" height="11.5"></rect>
+<rect x="0" y="126.1" width="79.9" height="11.5"></rect><rect x="82" y="126.1" width="79.9" height="11.5"></rect><rect x="164" y="126.1" width="79.9" height="11.5"></rect>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/hinnad/page": "app/admin/hinnad/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/tood/[id]/page": "app/admin/tood/[id]/page.js",
+  "/admin/tood/uus/page": "app/admin/tood/uus/page.js",
+  "/api/admin/upload/route": "app/api/admin/upload/route.js",
+  "/apple-icon.png/route": "app/apple-icon.png/route.js",
+  "/icon.png/route": "app/icon.png/route.js",
+  "/icon1.png/route": "app/icon1.png/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
+}

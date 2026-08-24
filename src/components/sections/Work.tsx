@@ -1,69 +1,70 @@
 import { getTranslations } from 'next-intl/server';
 
 import { ProjectCard } from '@/components/work/ProjectCard';
-import { Button } from '@/components/ui/Button';
-import { Container, Section } from '@/components/ui/Container';
+import { Section } from '@/components/ui/Container';
 import type { Locale } from '@/i18n/routing';
 import { publishedProjects } from '@/lib/store';
 
+import { Bricks, GLYPH_THREE } from './Bricks';
+import { actionClasses, FRAME, INK_PANEL, MONO_LABEL, SECTION_HEAD } from './styles';
+
 /**
- * Tehtud tööd — design-system.md §7.4.
+ * Objektid — the prototype's 2-up plate grid, and the section that replaces "Tehtud tööd".
  *
- * `sizes` per breakpoint, measured against the real grid rather than guessed:
+ * The four projects in the prototype are filler and never reach production: everything here
+ * comes from `publishedProjects()`, which is what the client actually entered at /admin.
+ * Presenting invented work as completed jobs is the one thing the brief forbids outright.
  *
- *   <560px    1 column, edge to edge          -> 100vw
- *   560-1023  2 columns, 20px gap             -> 44vw at 1023px, so 45vw
- *   1024-1439 3 columns, 24px gap             -> 29.3vw at 1439px, so 30vw
- *   >=1440    container caps at 1440 - 128px gutters = 1312; (1312-48)/3 -> a fixed 421px
+ * Which means the empty state is the important state. On day one there are no projects and
+ * this is the first thing anyone sees, so it gets the panel treatment the rest of the page
+ * uses for a notice — a 1.5px ink rule and a brick glyph — rather than a blank grid that
+ * looks like a failed fetch. The mono strip ("VALIK TEHTUD TÖID") is suppressed alongside
+ * it: a selection of nothing is not a selection.
  *
- * Getting this wrong is what makes a photo grid fail Lighthouse: with no `sizes` the browser
- * assumes 100vw and pulls the 2000px variant for a 290px card.
+ * `sizes`, measured against the real grid rather than guessed. Getting it wrong is what
+ * makes a photo grid fail Lighthouse — with no `sizes` the browser assumes 100vw and pulls
+ * the 2000px variant for a 300px card.
+ *
+ *   <720px    1 column, edge to edge                          -> 100vw
+ *   720-1199  2 columns, 40px gap                             -> 48vw
+ *   >=1200    frame caps at 1200 - 64px padding = 1136;
+ *             (1136 - 40) / 2                                 -> a fixed 548px
  */
-const CARD_SIZES =
-  '(min-width: 90rem) 421px, (min-width: 64rem) 30vw, (min-width: 35rem) 45vw, 100vw';
+const CARD_SIZES = '(min-width: 75rem) 548px, (min-width: 45rem) 48vw, 100vw';
 
 export async function Work({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: 'work' });
   const projects = await publishedProjects();
 
   return (
-    <Section id="tood" tone="page" labelledBy="tood-heading">
-      <Container width="wide">
-        <div className="max-w-copy">
-          <span aria-hidden="true" className="mb-5 block h-[3px] w-8 bg-accent" />
+    <Section id="tood" tone="page" size="sm" labelledBy="tood-heading">
+      <div className={FRAME}>
+        <div className={SECTION_HEAD}>
           <h2 id="tood-heading" className="text-h2">
             {t('heading')}
           </h2>
-          {/* The intro promises photos, so it is only honest once there are some. */}
           {projects.length > 0 ? (
-            <p className="mt-5 text-lead text-fg-muted">{t('intro')}</p>
+            <p className={`${MONO_LABEL} text-fg-muted`}>{t('strip')}</p>
           ) : null}
         </div>
 
         {projects.length === 0 ? (
-          /*
-           * Day one has zero projects, so this is the state a reviewer sees first — it gets
-           * the same care as the populated grid. A bordered block on the alternating tone
-           * reads as a deliberate notice rather than as a grid that failed to load, and the
-           * CTA keeps the section useful instead of merely apologetic.
-           */
-          <div className="mt-block max-w-copy rounded-control border border-line bg-surface p-6 lg:p-8">
+          <div className={`${INK_PANEL} mt-block max-w-copy`}>
+            <Bricks courses={GLYPH_THREE} height={20} joint={2} className="w-[2.125rem] text-ink" />
             <p className="text-body text-fg">{t('empty')}</p>
-            <div className="mt-6">
-              <Button as="a" href="#kontakt" variant="primary">
-                {t('emptyCta')}
-              </Button>
-            </div>
+            <a href="#kontakt" className={actionClasses('ink')}>
+              {t('emptyCta')}
+            </a>
           </div>
         ) : (
           <ul
             className={
-              // Below 560px the negative margin cancels the container gutter so the photos
-              // run edge to edge — a phone photo at full viewport width reads as a portfolio
-              // plate; the same photo inset by 20px reads as a template. The caption is
-              // pushed back to the gutter below.
-              'mt-block -mx-gutter grid grid-cols-1 gap-8 ' +
-              'xs:mx-0 xs:grid-cols-2 xs:gap-5 lg:grid-cols-3 lg:gap-6'
+              // Below 720px the negative margin cancels the frame's 20px padding so the
+              // photos run edge to edge — a phone photo at full viewport width reads as a
+              // portfolio plate; the same photo inset by 20px reads as a template. The
+              // caption is pushed back to the edge by `captionClassName`.
+              'mt-block -mx-5 grid grid-cols-1 gap-y-9 ' +
+              'min-[45rem]:mx-0 min-[45rem]:grid-cols-2 min-[45rem]:gap-x-10 min-[45rem]:gap-y-11'
             }
           >
             {projects.map((project) => (
@@ -72,13 +73,13 @@ export async function Work({ locale }: { locale: Locale }) {
                   project={project}
                   locale={locale}
                   sizes={CARD_SIZES}
-                  captionClassName="px-gutter xs:px-0"
+                  captionClassName="px-5 min-[45rem]:px-0"
                 />
               </li>
             ))}
           </ul>
         )}
-      </Container>
+      </div>
     </Section>
   );
 }
