@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&family=Azeret+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;900&family=Lexend:wght@400;800&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EAE7E1;font-family:Chivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#E8561F}a:hover{color:#1B1D1F}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid rgba(27,29,31,.1);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:500 10px 'Azeret Mono',ui-monospace,monospace;padding:3px 7px;background:#1B1D1F;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:700 13px/1.2 Chivo,system-ui,sans-serif;color:#1B1D1F;letter-spacing:.01em}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:500 10.5px 'Azeret Mono',ui-monospace,monospace;padding:3px 7px;background:rgba(27,29,31,.09);color:#1B1D1F;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 Chivo,system-ui,sans-serif;color:rgba(27,29,31,.6)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(27,29,31,.1);border-radius:6px;box-shadow:0 1px 3px rgba(27,29,31,.07);overflow:hidden}
+.dv-opt:target .dv-oid{background:#E8561F;color:#fff}
+.dv-next{margin:24px 0 0;font:400 11.5px/1.6 Chivo,system-ui,sans-serif;color:rgba(27,29,31,.5)}
+</style></helmet>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>
+<g id="g-m"><rect x="0" y="0" width="24" height="120"/><rect x="72" y="0" width="24" height="120"/><rect x="29" y="0" width="38" height="24"/></g>
+<g id="g-stem"><rect x="36" y="29" width="24" height="60"/></g>
+<g id="g-ph"><rect x="114" y="0" width="24" height="120"/><rect x="143" y="0" width="26" height="24"/><rect x="174" y="0" width="24" height="72"/><rect x="143" y="48" width="26" height="24"/><rect x="216" y="0" width="24" height="120"/><rect x="288" y="0" width="24" height="120"/><rect x="245" y="48" width="38" height="24"/></g>
+<g id="g-mph"><use href="#g-m"></use><use href="#g-ph"></use><use href="#g-stem"></use></g>
+<g id="g-lig"><rect x="0" y="0" width="24" height="120"/><rect x="29" y="0" width="38" height="24"/><rect x="36" y="29" width="24" height="60"/><rect x="72" y="0" width="24" height="120"/><rect x="101" y="0" width="26" height="24"/><rect x="132" y="0" width="24" height="120"/><rect x="204" y="0" width="24" height="120"/></g>
+<g id="g-ligbeam"><rect x="101" y="48" width="98" height="24"/></g>
+</defs></svg>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Experiments on <a class="dv-oid" href="#4a">4a</a> and <a class="dv-oid" href="#4c">4c</a> — more site, less safe</span></div>
+<p style="margin:0 0 22px;max-width:740px;font:400 12.5px/1.7 Chivo,system-ui,sans-serif;color:rgba(27,29,31,.62)">Three riskier takes: the foundation slab becomes masonry, the wordmark gets a concrete pour line, and the title block turns into a full drawing stamp with a ruler edge.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="5a">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Masonry — <a class="dv-oid" href="#4a">4a</a> with brick courses</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:54px 36px 46px;display:flex;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:center">
+<div style="font:800 96px/.94 Lexend,sans-serif;letter-spacing:-.05em;color:#2B2A26">MPH</div>
+<div style="margin-top:9px;align-self:stretch;margin-left:-14px;margin-right:-14px;display:flex;flex-direction:column;gap:2px">
+<div style="background:#2B2A26;padding:8px 18px;display:flex;justify-content:center"><div style="font:400 14px/1 'Azeret Mono',monospace;letter-spacing:.4em;color:#fff;text-indent:.4em;white-space:nowrap">MEISTRID</div></div>
+<div style="display:flex;gap:2px;height:11px"><div style="flex:1;background:#2B2A26"></div><div style="flex:2.2;background:#2B2A26"></div><div style="flex:2.2;background:#2B2A26"></div><div style="flex:1;background:#2B2A26"></div></div>
+<div style="display:flex;gap:2px;height:11px"><div style="flex:2.2;background:#2B2A26"></div><div style="flex:2.2;background:#2B2A26"></div><div style="flex:2.2;background:#2B2A26"></div></div>
+</div>
+<div style="margin-top:10px;font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.16em;color:#A9A399;white-space:nowrap">EHITUS · RENOVEERIMINE · VIIMISTLUS</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;display:flex;flex-direction:column;gap:1.5px;flex:none"><div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid #2B2A26"><div style="font:800 13px/1 Lexend,sans-serif;color:#2B2A26">M</div></div><div style="display:flex;gap:1.5px;height:5px"><div style="flex:1;background:#2B2A26"></div><div style="flex:2;background:#2B2A26"></div><div style="flex:1;background:#2B2A26"></div></div></div>
+<div style="font:800 12.5px/1 Lexend,sans-serif;letter-spacing:-.01em;color:#2B2A26;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#2B2A26;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">RUNNING BOND · #2B2A26 / #A9A399</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">The slab is laid, not poured: two brick courses with staggered mortar joints carry MEISTRID as the top course. Reads as masonry up close, as a solid plinth from the street.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="5b">
+<div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>Pour line — two-tone split</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:54px 36px 46px;display:flex;justify-content:center">
+<div style="display:flex;align-items:stretch;gap:12px">
+<div style="position:relative;display:inline-block">
+<div style="font:800 104px/1 Lexend,sans-serif;letter-spacing:-.05em;color:#A9A399">MPH</div>
+<div style="position:absolute;inset:0;font:800 104px/1 Lexend,sans-serif;letter-spacing:-.05em;color:#2B2A26;clip-path:inset(46% 0 0 0)">MPH</div>
+<div style="position:absolute;left:-4%;right:-4%;top:46%;height:3px;background:#fff"></div>
+</div>
+<div style="display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:6px 0 4px">
+<div style="writing-mode:vertical-rl;font:400 11px/1 'Azeret Mono',monospace;letter-spacing:.3em;color:#2B2A26">MEISTRID</div>
+<div style="width:9px;height:9px;background:#2B2A26"></div>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;background:#2B2A26;display:flex;align-items:center;justify-content:center;flex:none"><div style="font:800 17px/1 Lexend,sans-serif;color:#fff">M</div></div>
+<div style="font:800 12.5px/1 Lexend,sans-serif;letter-spacing:-.01em;color:#2B2A26;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#2B2A26;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">POUR LINE · #2B2A26 / #A9A399</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">The letters are poured from the bottom: set concrete below the line, formwork grey above, MEISTRID standing on end like edge signage. The most experimental — memorable, needs nerve.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="5c">
+<div class="dv-olabel"><a class="dv-oid" href="#5c">5c</a>Site stamp — <a class="dv-oid" href="#4c">4c</a> full drawing</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:54px 36px 46px;display:flex;justify-content:center">
+<div style="border:2.5px solid #1A5C60;display:flex;flex-direction:column">
+<div style="height:7px;border-bottom:2.5px solid #1A5C60;background:repeating-linear-gradient(90deg,#1A5C60 0,#1A5C60 1.5px,transparent 1.5px,transparent 11px)"></div>
+<div style="display:flex;align-items:stretch">
+<div style="padding:13px 20px 11px;display:flex;align-items:center"><div style="font:600 78px/.86 Oswald,sans-serif;letter-spacing:.01em;color:#1A5C60">MPH</div></div>
+<div style="width:2.5px;background:#1A5C60"></div>
+<div style="display:flex;flex-direction:column;justify-content:space-between;padding:13px 18px 11px;gap:11px">
+<div style="font:600 20px/1 Oswald,sans-serif;letter-spacing:.13em;color:#1A5C60">MEISTRID</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">EHITUS</div>
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">RENOVEERIMINE</div>
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">VIIMISTLUS</div>
+</div>
+</div>
+</div>
+<div style="border-top:2.5px solid #1A5C60;display:flex;justify-content:space-between;padding:5px 8px">
+<div style="font:400 7.5px/1 'Azeret Mono',monospace;letter-spacing:.12em;color:#1A5C60;white-space:nowrap">MPH MEISTRID OÜ</div>
+<div style="font:400 7.5px/1 'Azeret Mono',monospace;letter-spacing:.12em;color:#1A5C60;white-space:nowrap">EST · 1:1</div>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;border:2px solid #1A5C60;display:flex;align-items:center;justify-content:center;flex:none"><div style="font:600 15px/1 Oswald,sans-serif;color:#1A5C60">M</div></div>
+<div style="font:600 13px/1 Oswald,sans-serif;letter-spacing:.03em;color:#1A5C60;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#1A5C60;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">DRAWING STAMP · #1A5C60</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">The stamp grows a ruler edge and a register row — a mark that looks pulled off a drawing set. Strongest on paper: quotations, invoices, site boards.</div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "board <a class="dv-oid" href="#5a">5a</a> like <a class="dv-oid" href="#2a">2a</a>" · "<a class="dv-oid" href="#5a">5a</a> with <a class="dv-oid" href="#5c">5c</a> as the document stamp" · "calm <a class="dv-oid" href="#5b">5b</a> down"</p>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">More construction in the bones — mixes of <a class="dv-oid" href="#3a">3a</a>/<a class="dv-oid" href="#3b">3b</a>/<a class="dv-oid" href="#3c">3c</a></span></div>
+<p style="margin:0 0 22px;max-width:740px;font:400 12.5px/1.7 Chivo,system-ui,sans-serif;color:rgba(27,29,31,.62)">Same quiet palettes, MEISTRID moved out of the width-matched line, and each mark borrows one real thing from a building site: a foundation slab, a spirit level, a drawing title block.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="4a">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Foundation — MEISTRID in the slab</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:54px 36px 46px;display:flex;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:center">
+<div style="font:800 96px/.94 Lexend,sans-serif;letter-spacing:-.05em;color:#2B2A26">MPH</div>
+<div style="margin-top:9px;background:#2B2A26;padding:9px 18px;align-self:stretch;display:flex;justify-content:center;margin-left:-14px;margin-right:-14px">
+<div style="font:400 14px/1 'Azeret Mono',monospace;letter-spacing:.4em;color:#fff;text-indent:.4em">MEISTRID</div>
+</div>
+<div style="margin-top:9px;font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.16em;color:#A9A399;white-space:nowrap">EHITUS · RENOVEERIMINE · VIIMISTLUS</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;display:flex;flex-direction:column;flex:none"><div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid #2B2A26;border-bottom:none"><div style="font:800 13px/1 Lexend,sans-serif;color:#2B2A26">M</div></div><div style="height:7px;background:#2B2A26"></div></div>
+<div style="font:800 12.5px/1 Lexend,sans-serif;letter-spacing:-.01em;color:#2B2A26;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#2B2A26;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">FOUNDATION SLAB · #2B2A26 / #A9A399</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">MPH stands on a solid footing that is set wider than the letters, the way a foundation outgrows the wall it carries — and MEISTRID lives inside it. <a class="dv-oid" href="#3b">3b</a>'s clarity, no cut needed.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4b">
+<div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Level — MEISTRID on the baseline</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:54px 36px 46px;display:flex;justify-content:center">
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;align-items:flex-end;gap:16px">
+<div style="font:900 98px/.84 'Schibsted Grotesk',sans-serif;letter-spacing:-.045em;color:#4D5138">MPH</div>
+<div style="font:400 12.5px/1 'Azeret Mono',monospace;letter-spacing:.26em;color:#23241F;padding-bottom:3px">MEISTRID</div>
+</div>
+<div style="margin-top:13px;position:relative;height:12px">
+<div style="position:absolute;left:0;right:0;top:5px;height:2px;background:#23241F"></div>
+<div style="position:absolute;left:0;top:0;width:2px;height:12px;background:#23241F"></div>
+<div style="position:absolute;right:0;top:0;width:2px;height:12px;background:#23241F"></div>
+<div style="position:absolute;left:50%;top:2px;width:22px;height:8px;margin-left:-11px;background:#4D5138"></div>
+</div>
+<div style="margin-top:9px;display:flex;justify-content:space-between">
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.12em;color:#9D9A93">EHITUS</div>
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.12em;color:#9D9A93">RENOVEERIMINE</div>
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.12em;color:#9D9A93">VIIMISTLUS</div>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;background:#4D5138;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex:none"><div style="font:900 14px/1 'Schibsted Grotesk',sans-serif;color:#fff">M</div><div style="width:14px;height:1.5px;background:#fff"></div></div>
+<div style="font:900 12.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:-.01em;color:#23241F;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#4D5138;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">SPIRIT LEVEL · #4D5138 / #23241F</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">MEISTRID sits beside MPH on the shared baseline, and under both runs a level: end stops, one centred bubble. The line you check before anything else gets built. <a class="dv-oid" href="#3a">3a</a>'s olive, seam retired.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="4c">
+<div class="dv-olabel"><a class="dv-oid" href="#4c">4c</a>Title block — the drawing stamp</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:54px 36px 46px;display:flex;justify-content:center">
+<div style="border:2.5px solid #1A5C60;display:flex;align-items:stretch">
+<div style="padding:14px 20px 12px;display:flex;align-items:center"><div style="font:600 84px/.86 Oswald,sans-serif;letter-spacing:.01em;color:#1A5C60">MPH</div></div>
+<div style="width:2.5px;background:#1A5C60"></div>
+<div style="display:flex;flex-direction:column;justify-content:space-between;padding:14px 18px 12px;gap:12px">
+<div style="font:600 21px/1 Oswald,sans-serif;letter-spacing:.13em;color:#1A5C60">MEISTRID</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">EHITUS</div>
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">RENOVEERIMINE</div>
+<div style="font:400 8.5px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">VIIMISTLUS</div>
+</div>
+<div style="border-top:1.5px solid #1A5C60;padding-top:6px;font:400 8px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#1A5C60">OÜ · EST</div>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;border:2px solid #1A5C60;display:flex;align-items:center;justify-content:center;flex:none"><div style="font:600 15px/1 Oswald,sans-serif;color:#1A5C60">M</div></div>
+<div style="font:600 13px/1 Oswald,sans-serif;letter-spacing:.03em;color:#1A5C60;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#1A5C60;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">DRAWING TITLE BLOCK · #1A5C60</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">The whole mark is an architect's title block: MPH in the field, MEISTRID and the services in the register column. Keeps <a class="dv-oid" href="#3c">3c</a>'s rule-and-info idea but as a stamp that works on drawings, invoices and site boards.</div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "board <a class="dv-oid" href="#4a">4a</a> out like <a class="dv-oid" href="#2a">2a</a>" · "<a class="dv-oid" href="#4b">4b</a> in graphite" · "try the slab from <a class="dv-oid" href="#4a">4a</a> with <a class="dv-oid" href="#4c">4c</a>'s stamp as a secondary mark"</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Fresh pass on <a class="dv-oid" href="#1d">1d</a> — quieter colour, built for a white site</span></div>
+<p style="margin:0 0 22px;max-width:740px;font:400 12.5px/1.7 Chivo,system-ui,sans-serif;color:rgba(27,29,31,.62)">Type does the work, geometry is one move per mark, and black + orange are retired. Each option shows the lockup on white, the favicon, and the site header it would live in.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Seam — olive, Schibsted Grotesk</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:56px 36px 48px;display:flex;flex-direction:column;align-items:center;gap:14px">
+<div style="position:relative;display:inline-block">
+<div style="font:900 104px/1 'Schibsted Grotesk',sans-serif;letter-spacing:-.045em;color:#4D5138">MPH</div>
+<div style="position:absolute;left:-5%;right:-5%;top:60%;height:6px;background:#fff"></div>
+</div>
+<div style="font:400 13.5px/1 'Azeret Mono',monospace;letter-spacing:.42em;color:#23241F;text-indent:.42em">MEISTRID</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;background:#4D5138;display:flex;align-items:center;justify-content:center;flex:none"><div style="font:900 17px/1 'Schibsted Grotesk',sans-serif;color:#fff">M</div></div>
+<div style="font:900 12.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:-.01em;color:#23241F;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#4D5138;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">EXPANSION JOINT · #4D5138 / #23241F</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">One horizontal seam runs through the letters — the joint every builder cuts and every architect draws. Deep olive is calm on white, still reads workwear-tough in one colour.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Chamfer — graphite + gravel, Lexend</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:56px 36px 48px;display:flex;flex-direction:column;align-items:center;gap:12px">
+<div style="font:800 104px/1 Lexend,sans-serif;letter-spacing:-.05em;color:#2B2A26;display:flex">
+<span style="display:inline-block;clip-path:polygon(0 32%, 24% 0, 100% 0, 100% 100%, 0 100%)">M</span><span>PH</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div style="width:9px;height:9px;background:#A9A399"></div>
+<div style="font:400 13px/1 'Azeret Mono',monospace;letter-spacing:.34em;color:#2B2A26;text-indent:.34em">MEISTRID</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;border:1.5px solid #2B2A26;display:flex;align-items:center;justify-content:center;flex:none"><div style="font:800 16px/1 Lexend,sans-serif;color:#2B2A26;clip-path:polygon(0 32%, 24% 0, 100% 0, 100% 100%, 0 100%)">M</div></div>
+<div style="font:800 12.5px/1 Lexend,sans-serif;letter-spacing:-.01em;color:#2B2A26;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#2B2A26;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">45° CHAMFER · #2B2A26 / #A9A399</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">Nearly colourless: graphite ink, one gravel-grey square, and a single 45° cut on the M — the chamfer from joinery and site edges. The quietest and most premium of the three.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Block — petrol, Oswald condensed</div>
+<div class="dv-card" style="width:430px;background:#fff">
+<div style="padding:56px 36px 48px;display:flex;justify-content:center">
+<div style="display:flex;flex-direction:column;align-items:stretch">
+<div style="font:600 118px/.88 Oswald,sans-serif;letter-spacing:.015em;color:#1A5C60">MPH</div>
+<div style="font:600 26.5px/1 Oswald,sans-serif;letter-spacing:.245em;color:#1A5C60;text-indent:.02em;margin-top:6px">MEISTRID</div>
+<div style="margin-top:10px;display:flex;justify-content:space-between;border-top:2px solid #1A5C60;padding-top:7px">
+<div style="font:400 9px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">EHITUS</div>
+<div style="font:400 9px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">RENOVEERIMINE</div>
+<div style="font:400 9px/1 'Azeret Mono',monospace;letter-spacing:.1em;color:#6E7378">VIIMISTLUS</div>
+</div>
+</div>
+</div>
+<div style="border-top:1px solid #ECEAE4;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:26px;height:26px;background:#1A5C60;display:flex;align-items:center;justify-content:center;flex:none"><div style="font:600 17px/1 Oswald,sans-serif;color:#fff">M</div></div>
+<div style="font:600 13px/1 Oswald,sans-serif;letter-spacing:.03em;color:#1A5C60;white-space:nowrap">MPH MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:13px">
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Teenused</div>
+<div style="font:400 9.5px/1 Chivo,sans-serif;color:#6E7378">Objektid</div>
+<div style="background:#1A5C60;color:#fff;font:700 9.5px/1 Chivo,sans-serif;padding:7px 10px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="padding:18px 24px 22px;border-top:1px solid #ECEAE4;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">TIGHT-SET BLOCK · #1A5C60</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">Condensed caps set as one solid block, MEISTRID width-matched under MPH, services on the rule below. Deep petrol is professional without going corporate blue, and it prints in one colour.</div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "board <a class="dv-oid" href="#3a">3a</a> like <a class="dv-oid" href="#2a">2a</a>" · "try <a class="dv-oid" href="#3b">3b</a> with the seam from <a class="dv-oid" href="#3a">3a</a>" · "same three, darker/lighter"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Refined direction &amp; brand board — built on <a class="dv-oid" href="#1a">1a</a></span></div>
+<p style="margin:0 0 22px;max-width:760px;font:400 12.5px/1.7 Chivo,system-ui,sans-serif;color:rgba(27,29,31,.62)">Assumptions: Estonian-language applications, single-colour print on workwear and vehicle vinyl, and a logo that survives at 16&nbsp;px. The letters are built on one 24-unit beam module with 5-unit joint gaps, so the construction reference sits inside the lettering rather than beside it. Colour system A (charcoal + warm construction orange) is recommended; B and C are drawn from the same geometry.</p>
+<div class="dv-opts">
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>MPH Meistrid — mini brand board</div>
+<div class="dv-card" style="width:1280px;background:#F4F2EE">
+
+<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD9D2">
+<div style="padding:44px 48px 40px;border-right:1px solid #DDD9D2;display:flex;flex-direction:column;gap:26px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">01 · Primary logo</div>
+<div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:6px 0 0">
+<svg viewBox="0 0 312 120" style="width:300px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="font:900 54px/1 Chivo,sans-serif;letter-spacing:.066em;color:#1B1D1F;text-indent:.03em">MEISTRID</div>
+</div>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378;max-width:400px">Stacked lockup for signage, documents and social. The centre beam of the M carries the accent; every joint gap equals one fifth of a beam.</div>
+</div>
+<div style="padding:44px 48px 40px;display:flex;flex-direction:column;gap:26px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">02 · Horizontal logo</div>
+<div style="display:flex;align-items:center;gap:22px;padding:6px 0 0">
+<svg viewBox="0 0 312 120" style="width:168px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="width:3px;height:64px;background:#DDD9D2"></div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="font:900 27px/1 Chivo,sans-serif;letter-spacing:.05em;color:#1B1D1F">MEISTRID</div>
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.2em;color:#6E7378">EHITUS · RENOVEERIMINE</div>
+</div>
+</div>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378;max-width:400px">For website headers and vehicle sides. The rule replaces clear space, so the lockup can sit close to other elements.</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD9D2">
+<div style="padding:40px 48px;border-right:1px solid #DDD9D2;display:flex;flex-direction:column;gap:28px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">03 · Compact mark</div>
+<div style="display:flex;align-items:flex-end;gap:26px">
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="width:96px;height:96px;background:#1B1D1F;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 96 120" style="width:54px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg></div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#9D9A93">96</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="width:48px;height:48px;background:#1B1D1F;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 96 120" style="width:27px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg></div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#9D9A93">48</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="width:24px;height:24px;background:#1B1D1F;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 96 120" style="width:14px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg></div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#9D9A93">24</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="width:16px;height:16px;background:#1B1D1F;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 96 120" style="width:9px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use></svg></div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#9D9A93">16</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="width:64px;height:64px;background:#E8561F;border-radius:14px;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 96 120" style="width:36px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-stem"></use></svg></div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#9D9A93">APP</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+<div style="width:64px;height:64px;background:#1B1D1F;border-radius:50%;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 228 120" style="width:44px;height:auto;fill:#F4F2EE;display:block"><use href="#g-lig"></use><rect x="101" y="48" width="98" height="24" fill="#E8561F"></rect></svg></div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#9D9A93">AVATAR</div>
+</div>
+</div>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378;max-width:440px">The M block is the icon: one letter, three beams, readable to 16&nbsp;px (accent drops out below 24&nbsp;px). The interlocked MPH from <a class="dv-oid" href="#1b">1b</a> is kept as the round social avatar, where more width is available.</div>
+</div>
+<div style="padding:40px 48px;display:flex;flex-direction:column;gap:28px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">04 · Favicon in use</div>
+<div style="background:#DEDAD3;border-radius:9px 9px 0 0;padding:9px 9px 0;box-shadow:inset 0 0 0 1px rgba(27,29,31,.07)">
+<div style="display:flex;gap:6px;align-items:flex-end">
+<div style="background:#F4F2EE;border-radius:7px 7px 0 0;padding:9px 14px;display:flex;align-items:center;gap:9px;min-width:220px">
+<div style="width:16px;height:16px;background:#1B1D1F;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 96 120" style="width:9px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use></svg></div>
+<div style="font:400 11px/1 Chivo,sans-serif;color:#1B1D1F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">MPH Meistrid — Ehitus ja viimistlus</div>
+</div>
+<div style="background:rgba(244,242,238,.45);border-radius:7px 7px 0 0;padding:9px 14px;display:flex;align-items:center;gap:9px;min-width:130px">
+<div style="width:16px;height:16px;background:#C9C5BE;flex:none"></div>
+<div style="height:8px;width:66px;background:#C9C5BE"></div>
+</div>
+</div>
+<div style="background:#F4F2EE;padding:10px;display:flex;gap:8px;align-items:center">
+<div style="height:22px;flex:1;background:#EAE7E1;border-radius:11px;display:flex;align-items:center;padding:0 11px;font:400 9.5px/1 'Azeret Mono',monospace;color:#6E7378">mphmeistrid.ee</div>
+</div>
+</div>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378;max-width:440px">At tab size the mark holds because the counters are 24 units wide — a full beam — rather than hairlines.</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #DDD9D2">
+<div style="border-right:1px solid #DDD9D2;display:flex;flex-direction:column">
+<div style="padding:20px 28px 0;font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">05 · Dark version</div>
+<div style="flex:1;padding:34px 28px 40px;display:flex;flex-direction:column;align-items:flex-start;gap:11px">
+<svg viewBox="0 0 312 120" style="width:190px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="font:900 34px/1 Chivo,sans-serif;letter-spacing:.066em;color:#1B1D1F">MEISTRID</div>
+</div>
+<div style="padding:0 28px 20px;font:500 9px/1.5 'Azeret Mono',monospace;color:#9D9A93">ON PAPER / WHITE</div>
+</div>
+<div style="border-right:1px solid #DDD9D2;background:#1B1D1F;display:flex;flex-direction:column">
+<div style="padding:20px 28px 0;font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#6E7378">06 · Light version</div>
+<div style="flex:1;padding:34px 28px 40px;display:flex;flex-direction:column;align-items:flex-start;gap:11px">
+<svg viewBox="0 0 312 120" style="width:190px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="font:900 34px/1 Chivo,sans-serif;letter-spacing:.066em;color:#F4F2EE">MEISTRID</div>
+</div>
+<div style="padding:0 28px 20px;font:500 9px/1.5 'Azeret Mono',monospace;color:#6E7378">ON CHARCOAL / PHOTO</div>
+</div>
+<div style="border-right:1px solid #DDD9D2;display:flex;flex-direction:column">
+<div style="padding:20px 28px 0;font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">07 · Monochrome</div>
+<div style="flex:1;padding:34px 28px 40px;display:flex;flex-direction:column;align-items:flex-start;gap:11px">
+<svg viewBox="0 0 312 120" style="width:190px;height:auto;fill:#000;display:block"><use href="#g-mph"></use></svg>
+<div style="font:900 34px/1 Chivo,sans-serif;letter-spacing:.066em;color:#000">MEISTRID</div>
+</div>
+<div style="padding:0 28px 20px;font:500 9px/1.5 'Azeret Mono',monospace;color:#9D9A93">100% BLACK · DOCUMENTS, FAX, ENGRAVING</div>
+</div>
+<div style="background:#E8561F;display:flex;flex-direction:column">
+<div style="padding:20px 28px 0;font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(27,29,31,.6)">08 · Knockout</div>
+<div style="flex:1;padding:34px 28px 40px;display:flex;flex-direction:column;align-items:flex-start;gap:11px">
+<svg viewBox="0 0 312 120" style="width:190px;height:auto;fill:#fff;display:block"><use href="#g-mph"></use></svg>
+<div style="font:900 34px/1 Chivo,sans-serif;letter-spacing:.066em;color:#fff">MEISTRID</div>
+</div>
+<div style="padding:0 28px 20px;font:500 9px/1.5 'Azeret Mono',monospace;color:rgba(27,29,31,.6)">100% WHITE · ONE-COLOUR VINYL</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1.15fr 1fr;border-bottom:1px solid #DDD9D2">
+<div style="padding:40px 48px;border-right:1px solid #DDD9D2;display:flex;flex-direction:column;gap:24px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">09 · Colour — system A, recommended</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+<div style="display:flex;flex-direction:column;gap:9px"><div style="height:104px;background:#1B1D1F"></div><div style="font:700 11px/1.35 Chivo,sans-serif;color:#1B1D1F">Ink<div style="font:500 9.5px/1.5 'Azeret Mono',monospace;color:#6E7378">#1B1D1F<br>C70 M60 Y55 K70</div></div></div>
+<div style="display:flex;flex-direction:column;gap:9px"><div style="height:104px;background:#E8561F"></div><div style="font:700 11px/1.35 Chivo,sans-serif;color:#1B1D1F">Orange<div style="font:500 9.5px/1.5 'Azeret Mono',monospace;color:#6E7378">#E8561F<br>PANTONE 1665 C</div></div></div>
+<div style="display:flex;flex-direction:column;gap:9px"><div style="height:104px;background:#C9C5BE"></div><div style="font:700 11px/1.35 Chivo,sans-serif;color:#1B1D1F">Concrete<div style="font:500 9.5px/1.5 'Azeret Mono',monospace;color:#6E7378">#C9C5BE<br>Dividers, plans</div></div></div>
+<div style="display:flex;flex-direction:column;gap:9px"><div style="height:104px;background:#F4F2EE;box-shadow:inset 0 0 0 1px #DDD9D2"></div><div style="font:700 11px/1.35 Chivo,sans-serif;color:#1B1D1F">Paper<div style="font:500 9.5px/1.5 'Azeret Mono',monospace;color:#6E7378">#F4F2EE<br>Backgrounds</div></div></div>
+<div style="display:flex;flex-direction:column;gap:9px"><div style="height:104px;background:#6E7378"></div><div style="font:700 11px/1.35 Chivo,sans-serif;color:#1B1D1F">Steel<div style="font:500 9.5px/1.5 'Azeret Mono',monospace;color:#6E7378">#6E7378<br>Body text</div></div></div>
+</div>
+<div style="display:flex;gap:26px;padding-top:6px">
+<div style="flex:1;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">SYSTEM B — GRAPHITE / SAFETY YELLOW</div>
+<div style="display:flex;height:40px"><div style="flex:1;background:#26292B"></div><div style="flex:1;background:#F5C400"></div><div style="flex:1;background:#C9C5BE"></div></div>
+<div style="font:500 9px/1.5 'Azeret Mono',monospace;color:#6E7378">#26292B · #F5C400 · #C9C5BE — highest visibility on site, reads closer to plant hire</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:9px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">SYSTEM C — NAVY / CONCRETE</div>
+<div style="display:flex;height:40px"><div style="flex:1;background:#17253C"></div><div style="flex:1;background:#BDBAB4"></div><div style="flex:1;background:#E8561F"></div></div>
+<div style="font:500 9px/1.5 'Azeret Mono',monospace;color:#6E7378">#17253C · #BDBAB4 · #E8561F — quieter and more corporate, weaker at distance</div>
+</div>
+</div>
+</div>
+<div style="padding:40px 48px;display:flex;flex-direction:column;gap:24px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">10 · Typography</div>
+<div style="display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:1px solid #DDD9D2">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">CHIVO BLACK 900 — WORDMARK, HEADLINES</div>
+<div style="font:900 36px/1.05 Chivo,sans-serif;letter-spacing:.01em;color:#1B1D1F">ABCDEFGHIJKLM<br>NOPQRSTUVWXYZ 0123456789</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;padding-bottom:18px;border-bottom:1px solid #DDD9D2">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">CHIVO REGULAR / MEDIUM — BODY, WEB, OFFERS</div>
+<div style="font:400 14px/1.55 Chivo,sans-serif;color:#1B1D1F">Teostame vundamendist viimistluseni: müüritööd, krohv, plaatimine, siseviimistlus ja renoveerimine. <span style="font-weight:500">Kvaliteet, mis peab vastu.</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">AZERET MONO 500 — LABELS, INVOICES, SPECS</div>
+<div style="font:500 12.5px/1.7 'Azeret Mono',monospace;color:#1B1D1F">ARVE NR 2026-0148 · KUUPÄEV 24.08.2026<br>OBJEKT: TARTU MNT 12 · SUMMA 14 820,00 €</div>
+</div>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378">Office fallback for Word and Excel documents: Arial Black / Arial. Both fonts are free and installable on every machine.</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr;border-bottom:1px solid #DDD9D2;padding:40px 48px;gap:26px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">11 · Website header</div>
+<div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+<div style="flex:1;min-width:620px;border:1px solid #DDD9D2">
+<div style="background:#F4F2EE;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #DDD9D2">
+<div style="display:flex;align-items:center;gap:13px">
+<svg viewBox="0 0 312 120" style="width:96px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="width:2px;height:26px;background:#DDD9D2"></div>
+<div style="font:900 15px/1 Chivo,sans-serif;letter-spacing:.05em;color:#1B1D1F">MEISTRID</div>
+</div>
+<div style="display:flex;align-items:center;gap:26px">
+<div style="font:500 12px/1 Chivo,sans-serif;color:#1B1D1F">Teenused</div>
+<div style="font:500 12px/1 Chivo,sans-serif;color:#1B1D1F">Objektid</div>
+<div style="font:500 12px/1 Chivo,sans-serif;color:#1B1D1F">Meist</div>
+<div style="font:500 12px/1 Chivo,sans-serif;color:#1B1D1F">Kontakt</div>
+<div style="background:#E8561F;color:#fff;font:700 12px/1 Chivo,sans-serif;padding:11px 16px;white-space:nowrap">Küsi pakkumist</div>
+</div>
+</div>
+<div style="background:#1B1D1F;padding:44px 24px 40px;display:flex;flex-direction:column;gap:18px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.2em;color:#E8561F">TALLINN · HARJUMAA · ALATES 2014</div>
+<div style="font:900 40px/1.04 Chivo,sans-serif;letter-spacing:-.01em;color:#F4F2EE;max-width:560px;text-wrap:pretty">EHITAME JA VIIMISTLEME KORRALIKULT.</div>
+<div style="font:400 14px/1.6 Chivo,sans-serif;color:#C9C5BE;max-width:440px">Üldehitus, renoveerimine ja siseviimistlus — ühe meeskonnaga algusest lõpuni.</div>
+</div>
+</div>
+<div style="width:250px;border:1px solid #DDD9D2;background:#F4F2EE">
+<div style="padding:13px 15px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #DDD9D2">
+<div style="display:flex;align-items:center;gap:9px">
+<div style="width:28px;height:28px;background:#1B1D1F;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 96 120" style="width:16px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg></div>
+<div style="font:900 13px/1 Chivo,sans-serif;letter-spacing:.03em;color:#1B1D1F">MPH MEISTRID</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:4px">
+<div style="width:18px;height:2px;background:#1B1D1F"></div>
+<div style="width:18px;height:2px;background:#1B1D1F"></div>
+<div style="width:18px;height:2px;background:#1B1D1F"></div>
+</div>
+</div>
+<div style="background:#1B1D1F;padding:24px 15px 26px;display:flex;flex-direction:column;gap:11px">
+<div style="font:500 8px/1 'Azeret Mono',monospace;letter-spacing:.18em;color:#E8561F">TALLINN · HARJUMAA</div>
+<div style="font:900 21px/1.08 Chivo,sans-serif;color:#F4F2EE">EHITAME JA VIIMISTLEME KORRALIKULT.</div>
+</div>
+<div style="padding:14px 15px;display:flex;justify-content:space-between;align-items:center">
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#6E7378">MOBIILIVAADE 375</div>
+<div style="font:500 9px/1 'Azeret Mono',monospace;color:#6E7378">28 PX MARK</div>
+</div>
+</div>
+</div>
+</div>
+
+<sc-if value="{{ showPlacements }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:1.5fr 1fr;border-bottom:1px solid #DDD9D2">
+<div style="padding:40px 48px;border-right:1px solid #DDD9D2;display:flex;flex-direction:column;gap:24px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">12 · Construction van — placement diagram</div>
+<svg viewBox="0 0 640 250" style="width:100%;height:auto;display:block">
+<rect x="0" y="228" width="640" height="3" fill="#DDD9D2"></rect>
+<rect x="120" y="40" width="470" height="150" fill="#F9F8F6" stroke="#DDD9D2" stroke-width="2"></rect>
+<polygon points="36,190 36,128 72,80 120,62 120,190" fill="#F9F8F6" stroke="#DDD9D2" stroke-width="2"></polygon>
+<polygon points="78,88 118,74 118,120 58,120" fill="#E4E1DB"></polygon>
+<rect x="126" y="74" width="54" height="46" fill="#E4E1DB"></rect>
+<rect x="120" y="176" width="470" height="14" fill="#EFEDE8"></rect>
+<circle cx="120" cy="200" r="28" fill="#1B1D1F"></circle>
+<circle cx="120" cy="200" r="11" fill="#C9C5BE"></circle>
+<circle cx="470" cy="200" r="28" fill="#1B1D1F"></circle>
+<circle cx="470" cy="200" r="11" fill="#C9C5BE"></circle>
+<g transform="translate(206,74)"><g transform="scale(0.42)"><g fill="#1B1D1F"><use href="#g-m"></use><use href="#g-ph"></use></g><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></g></g>
+<text x="206" y="146" font-family="Chivo, sans-serif" font-weight="900" font-size="23.5" letter-spacing="1.55" fill="#1B1D1F">MEISTRID</text>
+<text x="206" y="172" font-family="Azeret Mono, monospace" font-weight="500" font-size="13" letter-spacing="2.6" fill="#6E7378">EHITUS · RENOVEERIMINE · +372 5xx xxxx</text>
+
+</svg>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378">Dark logo on a white van, aligned to the top of the sliding door and set at 40&nbsp;% of panel height. On a charcoal-wrapped van, swap to the light version and drop the orange to white for single-colour vinyl.</div>
+</div>
+<div style="padding:40px 48px;display:flex;flex-direction:column;gap:24px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">13 · Workwear</div>
+<div style="display:flex;gap:18px;align-items:stretch">
+<div style="flex:1;background:#1B1D1F;padding:26px 20px;display:flex;flex-direction:column;justify-content:space-between;gap:34px;min-height:190px">
+<div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+<svg viewBox="0 0 312 120" style="width:130px;height:auto;fill:#F4F2EE;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="font:900 23px/1 Chivo,sans-serif;letter-spacing:.066em;color:#F4F2EE">MEISTRID</div>
+</div>
+<div style="font:500 8.5px/1.5 'Azeret Mono',monospace;color:#6E7378">JACKET BACK<br>260 MM WIDE</div>
+</div>
+<div style="width:118px;background:#F5C400;padding:20px 16px;display:flex;flex-direction:column;justify-content:space-between;min-height:190px">
+<div style="width:44px;height:44px;background:#1B1D1F;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 96 120" style="width:25px;height:auto;fill:#F5C400;display:block"><use href="#g-m"></use></svg></div>
+<div style="font:500 8.5px/1.5 'Azeret Mono',monospace;color:rgba(27,29,31,.65)">HI-VIS CHEST<br>45 MM · 1 COLOUR</div>
+</div>
+</div>
+<div style="font:400 11.5px/1.6 Chivo,sans-serif;color:#6E7378">Embroidery and print both reduce to two colours: the mark in one, garment as the second. The M block alone is used wherever the placement is under 60&nbsp;mm.</div>
+</div>
+</div>
+</sc-if>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;padding:40px 48px;gap:44px">
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">14 · Clear space &amp; minimum size</div>
+<div style="display:flex;gap:34px;align-items:flex-end;flex-wrap:wrap">
+<div style="padding:24px;border:1px dashed #C9C5BE;display:inline-flex"><svg viewBox="0 0 312 120" style="width:150px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg></div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font:500 9.5px/1.7 'Azeret Mono',monospace;color:#6E7378">CLEAR SPACE = 1 BEAM (H/5)<br>MIN PRIMARY: 26 MM / 100 PX WIDE<br>MIN MARK: 16 PX / 8 MM</div>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93">15 · Files to produce</div>
+<div style="font:400 11.5px/1.75 Chivo,sans-serif;color:#6E7378">SVG and EPS for each version (primary, horizontal, mark), PNG at 512 / 256 / 64&nbsp;px, ICO favicon at 16 / 32 / 48&nbsp;px, one-colour vinyl cut files for the van, and DST embroidery for workwear. Say the word and I will export the set from this board.</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<p class="dv-next">Try next: "make the compact mark the interlocked MPH from <a class="dv-oid" href="#1b">1b</a> everywhere" · "show system B applied across the whole board" · "add letterhead, business card and quotation templates"</p>
+</section>
+
+<sc-if value="{{ showConcepts }}" hint-placeholder-val="{{ true }}">
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Four directions for MPH Meistrid</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Architectural MPH — chosen</div>
+<div class="dv-card" style="width:420px">
+<div style="background:#F4F2EE;padding:52px 36px;display:flex;flex-direction:column;align-items:center;gap:16px">
+<svg viewBox="0 0 312 120" style="width:270px;height:auto;fill:#1B1D1F;display:block"><use href="#g-m"></use><use href="#g-ph"></use><rect x="36" y="29" width="24" height="60" fill="#E8561F"></rect></svg>
+<div style="font:900 48px/1 Chivo,sans-serif;letter-spacing:.066em;color:#1B1D1F">MEISTRID</div>
+</div>
+<div style="padding:20px 24px 24px;border-top:1px solid rgba(27,29,31,.1);display:flex;flex-direction:column;gap:10px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">MODULAR BEAM CONSTRUCTION</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">Every letter is assembled from one beam width with a visible joint gap, the way walls read on a plan. Square counters keep it legible when it shrinks; the accent marks the load-bearing member.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Master mark — interlocked monogram</div>
+<div class="dv-card" style="width:420px">
+<div style="background:#1B1D1F;padding:52px 36px;display:flex;flex-direction:column;align-items:center;gap:18px">
+<svg viewBox="0 0 228 120" style="width:250px;height:auto;fill:#F4F2EE;display:block"><use href="#g-lig"></use><rect x="101" y="48" width="98" height="24" fill="#E8561F"></rect></svg>
+<div style="font:500 12px/1 'Azeret Mono',monospace;letter-spacing:.34em;color:#C9C5BE;text-indent:.34em">MEISTRID</div>
+</div>
+<div style="padding:20px 24px 24px;border-top:1px solid rgba(27,29,31,.1);display:flex;flex-direction:column;gap:10px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">SHARED STEMS · ONE CONTINUOUS BEAM</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">The three letters share stems and one horizontal beam runs through the whole monogram. Extremely strong as a badge or embroidery, but the P asks the eye to work harder than a wordmark should.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Precision construction — drawing lines</div>
+<div class="dv-card" style="width:420px">
+<div style="background:#FBFAF8;padding:52px 36px;display:flex;flex-direction:column;align-items:center;gap:20px">
+<svg viewBox="-6 -6 324 158" style="width:270px;height:auto;display:block">
+<use href="#g-mph" fill="none" stroke="#1B1D1F" stroke-width="3"></use>
+<rect x="0" y="140" width="312" height="1.5" fill="#E8561F"></rect>
+<rect x="0" y="132" width="1.5" height="18" fill="#E8561F"></rect>
+<rect x="310.5" y="132" width="1.5" height="18" fill="#E8561F"></rect>
+<rect x="155" y="136" width="1.5" height="10" fill="#C9C5BE"></rect>
+</svg>
+<div style="font:500 11px/1 'Azeret Mono',monospace;letter-spacing:.3em;color:#6E7378;text-indent:.3em">MEISTRID</div>
+</div>
+<div style="padding:20px 24px 24px;border-top:1px solid rgba(27,29,31,.1);display:flex;flex-direction:column;gap:10px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">OUTLINE + DIMENSION LINE</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">The same modular letters drawn as parts on a technical drawing. Premium and precise on a quotation, but the hairlines close up on vinyl, embroidery and at favicon size.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Bold contractor — distance first</div>
+<div class="dv-card" style="width:420px">
+<div style="background:#F4F2EE;padding:52px 36px;display:flex;flex-direction:column;align-items:center;gap:0">
+<div style="background:#1B1D1F;padding:18px 30px 20px;clip-path:polygon(0 0,100% 0,100% 100%,26px 100%,0 calc(100% - 26px));display:flex;flex-direction:column;align-items:flex-start;gap:6px">
+<div style="font:900 76px/.86 Chivo,sans-serif;letter-spacing:-.035em;color:#F4F2EE">MPH</div>
+</div>
+<div style="background:#E8561F;padding:9px 30px;width:calc(100% - 60px);box-sizing:content-box;display:flex;justify-content:center">
+<div style="font:900 21px/1 Chivo,sans-serif;letter-spacing:.13em;color:#1B1D1F;text-indent:.13em">MEISTRID</div>
+</div>
+</div>
+<div style="padding:20px 24px 24px;border-top:1px solid rgba(27,29,31,.1);display:flex;flex-direction:column;gap:10px">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;letter-spacing:.14em;color:#9D9A93">TYPE-LED BLOCK · CUT CORNER</div>
+<div style="font:400 12px/1.6 Chivo,sans-serif;color:#6E7378">Heaviest and loudest: readable across a car park and cheap to reproduce. It is also the least distinctive — the block and cut corner do the work, not the letters, so it dates faster.</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<sc-if value="{{ showEvaluation }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top:34px;background:#fff;border:1px solid rgba(27,29,31,.1);border-radius:6px;padding:28px 30px 24px;max-width:1000px">
+<div style="font:500 10px/1 'Azeret Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#9D9A93;margin-bottom:20px">Evaluation</div>
+<div style="display:grid;grid-template-columns:1.5fr repeat(4,1fr);row-gap:0;column-gap:14px;align-items:center">
+<div style="font:500 9.5px/1 'Azeret Mono',monospace;color:#9D9A93;padding-bottom:12px">CRITERION</div>
+<div style="font:700 11px/1 Chivo,sans-serif;color:#1B1D1F;padding-bottom:12px">1a Architectural</div>
+<div style="font:700 11px/1 Chivo,sans-serif;color:#1B1D1F;padding-bottom:12px">1b Master mark</div>
+<div style="font:700 11px/1 Chivo,sans-serif;color:#1B1D1F;padding-bottom:12px">1c Precision</div>
+<div style="font:700 11px/1 Chivo,sans-serif;color:#1B1D1F;padding-bottom:12px">1d Bold</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Readability</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Memorability</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●○○</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Professionalism</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Construction relevance</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●○○</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Small-size readability</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●○○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Vehicle branding</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●○○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Workwear</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●○○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Web use</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+
+<div style="font:400 11.5px/1 Chivo,sans-serif;color:#6E7378;padding:9px 0;border-top:1px solid #EDEAE5">Monochrome</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●○</div>
+<div style="font:400 12px/1 'Azeret Mono',monospace;color:#1B1D1F;padding:9px 0;border-top:1px solid #EDEAE5">●●●</div>
+</div>
+<div style="margin-top:20px;padding-top:18px;border-top:1px solid #EDEAE5;font:400 12px/1.65 Chivo,sans-serif;color:#6E7378;max-width:760px"><span style="color:#1B1D1F;font-weight:700">Chosen: <a class="dv-oid" href="#1a">1a</a>.</span> It is the only direction that stays readable at every size while keeping the construction reference inside the letters. <a class="dv-oid" href="#1b">1b</a> survives as the social avatar, <a class="dv-oid" href="#1c">1c</a> as a drawing-style graphic for quotations, and the cut-corner block from <a class="dv-oid" href="#1d">1d</a> is not carried forward.</div>
+</div>
+</sc-if>
+
+<p class="dv-next">Try next: "refine <a class="dv-oid" href="#1b">1b</a> into the primary instead" · "try <a class="dv-oid" href="#1a">1a</a> in system B" · "show four more concepts, further apart"</p>
+</section>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showConcepts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Board&quot;},&quot;showEvaluation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Board&quot;},&quot;showPlacements&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Board&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showConcepts: this.props.showConcepts ?? true,
+      showEvaluation: this.props.showEvaluation ?? true,
+      showPlacements: this.props.showPlacements ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

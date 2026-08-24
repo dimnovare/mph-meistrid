@@ -44,3 +44,8 @@ next-env.d.ts
 
 # local
 /.claude/settings.local.json
+
+# agent + tooling scratch
+/.playwright-mcp
+/logo-harness*.png
+/nul

@@ -34,46 +34,81 @@
    * ------------------------------------------------------------------ */
   --color-*: initial;
 
-  /* Kept for lightbox chrome and pure-white overlays only. */
+  /* Lightbox chrome, pure-white overlays, and the white label on an ink fill —
+     which since the 5a identity is the primary button, the nav CTA and
+     ::selection, not an exception. */
   --color-white: #ffffff;
   --color-black: #000000;
 
   /* Light surfaces — warm neutrals (hue ~40°, not blue-grey slate).
-     Warmth is what separates "construction" from "software startup", and it
-     sits under the orange accent without the palette going muddy. */
+     Warmth is what separates "construction" from "software startup", and it is
+     what keeps the graphite ink below reading as stone rather than as cold
+     slate once the orange has gone. */
   --color-page: #ffffff; /* page background */
   --color-surface: #f6f5f2; /* alternating band, quiet card fill */
   --color-surface-2: #eceae5; /* input wells, hover surface, disabled fill */
 
   /* Two border tokens, not one. `line` is decorative and does NOT meet 3:1;
      `line-strong` does (3.66:1 on page) and is the ONLY border permitted as
-     the sole visible boundary of an interactive control. WCAG 1.4.11. */
+     the sole visible boundary of an interactive control. WCAG 1.4.11.
+     The 5a prototype draws its hairlines at #ECEAE4, one step lighter than
+     `line`; the handoff permits snapping that to `line`, so it is NOT a new
+     token — every prototype hairline maps onto `--color-line`. */
   --color-line: #ddd9d3;
   --color-line-strong: #8b857c;
 
-  /* Text on light */
+  /* Text on light. The prototype's muted text #6E6A61 is the same colour to
+     within a rounding step, so it maps onto `fg-muted` — again, no new token. */
   --color-fg-muted: #6a655e; /* 5.78:1 on page — secondary text */
   --color-fg: #262320; /* 15.63:1 on page — body */
   --color-fg-strong: #14120f; /* 18.70:1 on page — headings */
 
-  /* Ink bands (hero scrim, final CTA, footer, lightbox, mobile call bar) */
-  --color-ink: #16130f;
-  --color-ink-raised: #262218; /* raised surface inside an ink band */
-  --color-ink-line: #716d65; /* 3.44:1 on ink, 3.08:1 on ink-raised */
-  --color-on-ink: #f5f3ef; /* 16.71:1 on ink */
-  --color-on-ink-muted: #b5afa4; /* 8.49:1 on ink */
+  /* Ink bands (band, footer, lightbox, mobile call bar) and — new in 5a — every
+     primary fill: nav CTA, buttons, admin sticky bar.
+     Ratios below were all recomputed against #2B2A26. The graphite is ~3.4x
+     lighter than the #16130F it replaces, so no figure carried over. */
+  --color-ink: #2b2a26; /* brand graphite. 14.36:1 vs page, 13.18:1 vs surface,
+                           11.95:1 vs surface-2 — white-on-ink is 14.36:1.
+                           (The handoff quotes 12.6:1 for #fff on #2B2A26; the
+                           real WCAG figure is 14.36:1. Both clear AA/AAA.) */
+  --color-ink-raised: #3a3833; /* raised surface inside an ink band — the hover
+     fill of a secondary button on ink. Was #262218, which is DARKER than the
+     new ink (1.10:1, and a "raised" surface that recedes); #3A3833 restores the
+     +6.5 L* step the old ink/ink-raised pair had. 1.23:1 vs ink. */
+  --color-ink-line: #878278; /* 3.76:1 on ink, 3.06:1 on ink-raised. Was
+     #716D65, which drops to 2.79:1 on the new ink and so would no longer be
+     legal as the sole boundary of a control (WCAG 1.4.11). Lightened just far
+     enough to clear 3:1 against BOTH ink and ink-raised, which is the pair the
+     secondary button on ink needs in its rest and hover states. */
+  --color-on-ink: #f5f3ef; /* 12.96:1 on ink, 10.57:1 on ink-raised */
+  --color-on-ink-muted: #b5afa4; /* 6.59:1 on ink, 5.37:1 on ink-raised */
 
-  /* Accent — Direction A: warm construction orange.
-     SIX tokens because one orange cannot do every job accessibly:
-     `accent` is a FILL (3.55:1 on white → large text / UI only),
-     `accent-strong` is the same hue pushed dark enough to be TEXT on light. */
+  /* ---------------------------------------------------------------------- *
+   * ACCENT — RETIRED FROM THE PUBLIC SITE. ADMIN-ONLY, LEGACY.
+   *
+   * The 5a identity has no accent colour: every primary action is an ink fill
+   * with a white label (14.36:1), and the recurring device is the brick course,
+   * not a coloured bar. Direction A's construction orange is gone from the
+   * public design.
+   *
+   * The tokens stay defined ONLY because the admin still paints two things with
+   * them — the photo-upload progress bar and the cover-photo "Kaanepilt" badge
+   * (src/components/admin/PhotoManager.tsx) — and deleting them would break the
+   * build for work that is in flight. They are frozen legacy.
+   *
+   * DO NOT USE THESE IN NEW PUBLIC-SITE WORK. Reach for `ink` + `white`
+   * (primary), `fg-strong` (emphasis) or `danger` (destructive) instead. The
+   * remaining public-site usages are being repointed to ink section by section;
+   * when the last one goes and the admin's two are restyled, delete this block.
+   * ---------------------------------------------------------------------- */
   --color-accent: #e2600f; /* rest fill */
   --color-accent-hover: #f0721e; /* fill hover — LIGHTER, so the ink label
                                     gains contrast (6.35:1) instead of losing it */
   --color-accent-press: #d45a0d; /* fill active — ink label still 4.69:1 */
   --color-accent-strong: #b04b0c; /* accent as text/link on light: 5.44:1 on
                                      page, 4.99:1 on surface, 4.53:1 on surface-2 */
-  --color-accent-on-ink: #ff8c42; /* accent as text on ink: 8.01:1 */
+  --color-accent-on-ink: #ff8c42; /* accent as text on ink: 6.21:1 against the
+                                     new graphite (was 8.01:1 on #16130F) */
   --color-accent-soft: #fbede3; /* tint block behind notes/disclaimers */
   --color-on-accent: #14120f; /* label ON an accent fill: 5.27:1.
                                  NEVER white — white on #E2600F is 3.55:1 and
@@ -87,19 +122,25 @@
   --color-success-soft: #eaf3ed;
 
   /* Focus. One ring colour site-wide, flipped only inside ink bands.
-     Ink ring clears 3:1 against every light surface AND against the orange
-     fill (5.27:1), so a single token works on top of every component. */
+     `focus` is `fg-strong`, not `ink`: it clears 3:1 against every light
+     surface it is ever drawn on — 18.70:1 on page, 17.15:1 on surface,
+     15.55:1 on surface-2 — and the 2px `outline-offset` below keeps it on that
+     surface rather than on the control, which matters now that the primary
+     button is itself an ink fill (#14120F on #2B2A26 would be 1.30:1 if the
+     ring ever touched the fill). Inside ink bands it flips to `focus-on-ink`,
+     12.96:1 on ink and 10.57:1 on ink-raised. */
   --color-focus: #14120f;
   --color-focus-on-ink: #f5f3ef;
 
   /* ------------------------------------------------------------------ *
    * TYPOGRAPHY
-   * Two families, three weight files total (see design-system.md §4).
-   * Populated by next/font/google in src/app/layout.tsx — the loader must
-   * expose exactly these variable names on <html>.
+   * Populated by next/font/google in src/lib/fonts.ts, whose variables the
+   * [locale] and admin layouts put on <html> — the loader must expose exactly
+   * these variable names.
    * Non-inline @theme (not `@theme inline`) is used on purpose: it emits
-   * --font-sans / --font-display into :root so the base layer below and any
-   * hand-written CSS can read them, not just the generated utilities.
+   * --font-sans / --font-display / --font-mono into :root so the base layer
+   * below and any hand-written CSS can read them, not just the generated
+   * utilities.
    * ------------------------------------------------------------------ */
   --font-sans:
     var(--font-mph-sans), "Segoe UI", system-ui, -apple-system, "Helvetica Neue",
@@ -107,6 +148,22 @@
   --font-display:
     var(--font-mph-display), var(--font-mph-sans), "Segoe UI Condensed",
     "Arial Narrow", system-ui, sans-serif;
+
+  /* Mono — the 5a identity's third voice: the MEISTRID line inside the mark,
+     kickers, spec strips, meta rows and form labels. The handoff specifies
+     Azeret Mono 400/500.
+     `--font-mph-mono` is UNBOUND at the moment: Azeret Mono ships no `cyrillic`
+     subset (verified against next's font-data.json — it has latin + latin-ext
+     only), so loading it would silently render every Russian kicker in a
+     fallback. See the note at the top of src/lib/fonts.ts. Binding the loader
+     variable there is the only change needed once a Cyrillic-capable mono is
+     agreed; nothing that consumes `font-mono` has to move.
+     The fallback lives INSIDE var() on purpose — an unbound custom property
+     with no fallback makes the whole font-family declaration invalid at
+     computed-value time, which would silently inherit the sans instead. */
+  --font-mono:
+    var(--font-mph-mono, ui-monospace), "Cascadia Mono", "Segoe UI Mono", Menlo,
+    Consolas, monospace;
 
   /* Type scale. Namespace reset again: only these seven sizes exist, so
      `text-4xl` cannot smuggle an off-scale size into the build. Every value
@@ -205,8 +262,10 @@
   --radius-panel: 8px; /* admin controls, dialogs, upload dropzone */
 
   /* ------------------------------------------------------------------ *
-   * SHADOWS — four, all warm-tinted off the ink (#14120F) rather than pure
+   * SHADOWS — four, all warm-tinted off `fg-strong` (#14120F) rather than pure
    * black, and all restrained. Cards use borders, not elevation.
+   * Values are unchanged by the 5a migration: they were always keyed to
+   * fg-strong, not to `ink`, so the graphite move does not touch them.
    * ------------------------------------------------------------------ */
   --shadow-*: initial;
   --shadow-edge: inset 0 -2px 0 rgb(20 18 15 / 0.14); /* the physical "lip" on
@@ -302,9 +361,11 @@
     text-wrap: pretty;
   }
 
-  /* One focus treatment for the entire site and admin. The ink ring clears
-     3:1 against every light surface and against the orange fill, so it never
-     needs a per-component override — only an inversion inside ink bands. */
+  /* One focus treatment for the entire site and admin. The ring clears 3:1
+     against every light surface, and the 2px offset is load-bearing now that
+     the primary button is an ink fill: the ring is drawn in the gap, on the
+     page/surface behind the control, never on the graphite itself. Inside ink
+     bands it inverts. No per-component override anywhere. */
   :focus-visible {
     outline: 3px solid var(--color-focus);
     outline-offset: 2px;
@@ -323,9 +384,12 @@
     outline-offset: 1px;
   }
 
+  /* The one place the retired accent still showed on every public page. 5a has
+     no accent, so selection becomes the identity's own pair: graphite fill,
+     white label — the same combination as the primary button. */
   ::selection {
-    background-color: var(--color-accent);
-    color: var(--color-on-accent); /* 5.27:1 — selected text stays readable */
+    background-color: var(--color-ink);
+    color: var(--color-white); /* 14.36:1 — selected text stays readable */
   }
 
   /* Keyboard entry point. Visually hidden until focused. */

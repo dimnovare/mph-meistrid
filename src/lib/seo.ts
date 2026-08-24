@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { SITE_URL } from './env';
+import { NOINDEX, SITE_URL } from './env';
 import { locales, type Locale } from '@/i18n/routing';
 
 /**
@@ -64,6 +64,9 @@ export function buildMetadata(options: {
       description,
       ...(image ? { images: [image] } : {}),
     },
-    ...(noIndex ? { robots: { index: false, follow: false } } : {}),
+    // A robots.txt disallow stops polite crawlers fetching the page; the meta tag stops a
+    // page that was reached some other way (a shared link, an old index entry) from being
+    // listed. A demo needs both.
+    ...(noIndex || NOINDEX ? { robots: { index: false, follow: false } } : {}),
   };
 }

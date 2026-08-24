@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#EAE7E1;font-family:Lexend,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#262320}a:hover{color:#6A655E}
+.dv-turn{padding:44px 48px 36px;scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:500 10px 'Azeret Mono',ui-monospace,monospace;padding:3px 7px;background:#1B1D1F;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 Lexend,system-ui,sans-serif;color:#1B1D1F}
+.dv-grp{font:500 10px 'Azeret Mono',ui-monospace,monospace;letter-spacing:.18em;color:#8D8A83;margin:34px 0 14px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:500 10.5px 'Azeret Mono',ui-monospace,monospace;padding:3px 7px;background:rgba(27,29,31,.09);color:#1B1D1F;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11.5px/1.3 Lexend,system-ui,sans-serif;color:rgba(27,29,31,.6)}
+.dv-card{background:#fff;border:1px solid rgba(27,29,31,.12);border-radius:10px;box-shadow:0 1px 3px rgba(27,29,31,.07);overflow:hidden}
+.dv-opt:target .dv-oid{background:#E8561F;color:#fff}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Admin design pass — 360px first, one column, built on the 5a identity</span></div>
+<p style="margin:0;max-width:780px;font:400 12.5px/1.7 Lexend,sans-serif;color:rgba(27,29,31,.62)">Token values are synced from src/app/globals.css in the connected repo — the names and values below are the real ones. Copy follows the prototype's tone. All admin type is Lexend; body 18px on fg-strong, nothing under 16px, targets ≥56px, borders 2px, radius 8.</p>
+
+<div class="dv-grp">00 · TOKENS + THE EIGHT OPEN CALLS</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Token sheet (synced from globals.css)</div>
+<div class="dv-card" style="width:400px;padding:24px;display:flex;flex-direction:column;gap:8px">
+<div style="font:400 11px/1.5 Lexend,sans-serif;color:#6A655E;margin-bottom:4px">Synced from src/app/globals.css — these are the real tokens.</div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#14120F;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">fg-strong #14120F · headings, 18.7:1</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#262320;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">fg #262320 · body / strong borders</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#16130F;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">ink #16130F · sticky bottom bar</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#6A655E;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">fg-muted #6A655E · helper lines only</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#F6F5F2;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">surface #F6F5F2 · line #DDD9D3</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#8B857C;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">line-strong #8B857C · 3.66:1 boundary</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#B4231A;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">danger #B4231A · danger-soft #FCEDEB</div></div>
+<div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;background:#1B6B3F;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"></div><div style="font:500 11.5px/1 'Azeret Mono',monospace;color:#262320">success #1B6B3F · success-soft #EAF3ED</div></div>
+<div style="font:500 11.5px/1.7 'Azeret Mono',monospace;color:#6A655E;margin-top:6px">radius-panel 8 · shadow-bar 0 -2px 12px 18%<br>control-lg 56 · control-xl 88 · tap-min 56<br>accent (orange) unused in admin — primary fills are ink, per the 5a direction</div>
+</div>
+</div>
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Stances on §6 — short version</div>
+<div class="dv-card" style="width:460px;padding:24px;display:flex;flex-direction:column;gap:11px">
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>1 Empty state</b> — a proper first-run moment: what will appear here + the one next step. See <a class="dv-oid" href="#1e">1e</a>.</div>
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>2 Project row</b> — he scans for <i>which job</i> and <i>is it visible</i>; thumbnail + title + chip stay, meta recedes, controls drop to a second row at full width. See <a class="dv-oid" href="#1f">1f</a>.</div>
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>3 Photos: rows, not grid</b> — at 360px a 3-col grid leaves 104px cells; four 56px controls don't fit without overlays he can mis-tap. Rows keep, but photo-forward: 112px preview, cover pinned first. See <a class="dv-oid" href="#1j">1j</a>.</div>
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>4 "Tee foto"</b> — earns its place: second 56px button beside the picker, camera capture. String: „Tee foto".</div>
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>5 Upload progress</b> — one big count + one bar he can read at arm's length; per-photo detail only for the failures. See <a class="dv-oid" href="#1j">1j</a>.</div>
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>6 Bottom bar</b> — stays ink; gains the job's status line so the bar answers "what happens when I press this". See <a class="dv-oid" href="#1h">1h</a>.</div>
+
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>7 Undo</b> — not worth it: an 8s toast is exactly what dusty hands in daylight miss. The specific dialog + the „Võta kodulehelt maha" line already catch the real mistake. Keep deletion honest and permanent.</div>
+<div style="font:400 12.5px/1.6 Lexend,sans-serif;color:#262320"><b>8 Keelevahetus (added)</b> — ET/RU flag buttons in the admin header, overriding the brief's Estonian-only interface at the client's request. Needs a Russian admin string set alongside admin-text.ts; flags shown in the header below.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">01 · LOGIN — /admin/login</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Rest · focused · password visible</div>
+<div class="dv-card" style="width:360px" data-screen-label="Login rest">
+<div style="padding:40px 20px 36px;display:flex;flex-direction:column;gap:26px">
+<div style="display:flex;align-items:center;gap:11px">
+<div style="width:30px;height:30px;display:flex;flex-direction:column;gap:2px;flex:none"><div style="flex:1;display:flex;align-items:center;justify-content:center;border:1.5px solid #262320"><div style="font:800 15px/1 Lexend,sans-serif;color:#262320">M</div></div><div style="display:flex;gap:2px;height:6px"><div style="flex:1;background:#262320"></div><div style="flex:2;background:#262320"></div><div style="flex:1;background:#262320"></div></div></div>
+<div style="font:800 15px/1 Lexend,sans-serif;color:#262320">MPH MEISTRID</div>
+</div>
+<div style="font:800 28px/1.1 Lexend,sans-serif;letter-spacing:-.02em;color:#14120F">Logi sisse</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Kasutajanimi</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">nt. martin</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Parool</div>
+<div style="font:600 16px/1 Lexend,sans-serif;color:#262320;text-decoration:underline;text-underline-offset:3px">Näita parooli</div>
+</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;box-shadow:0 0 0 3px #DDD9D3;display:flex;align-items:center;padding:0 16px;font:400 22px/1 Lexend,sans-serif;color:#14120F;letter-spacing:.2em">••••••••</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E">Fookuses väli: 2px ink + 3px halo</div>
+</div>
+<div style="height:56px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#fff">Logi sisse</div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#6A655E;text-align:center">Kui sisse ei saa, helista<br><span style="color:#14120F;font-weight:600">+372 5XXX XXXX</span></div>
+</div>
+</div>
+</div>
+<div class="dv-opt" id="1d">
+<div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Submitting · wrong credentials · rate-limited</div>
+<div class="dv-card" style="width:360px" data-screen-label="Login states">
+<div style="padding:36px 20px;display:flex;flex-direction:column;gap:24px">
+<div style="height:56px;background:#6A655E;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;font:600 18px/1 Lexend,sans-serif;color:#fff"><div style="width:16px;height:16px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%"></div>Login sisse…</div>
+<div style="background:#FCEDEB;border-left:3px solid #B4231A;border-radius:0 8px 8px 0;padding:16px;display:flex;gap:12px;align-items:flex-start">
+<div style="font:800 18px/1 Lexend,sans-serif;color:#B4231A;flex:none">!</div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Vale kasutajanimi või parool. Proovi uuesti.</div>
+</div>
+<div style="background:#FCEDEB;border-left:3px solid #B4231A;border-radius:0 8px 8px 0;padding:16px;display:flex;gap:12px;align-items:flex-start">
+<div style="font:800 18px/1 Lexend,sans-serif;color:#B4231A;flex:none">!</div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Liiga palju katseid. Oota 5 minutit ja proovi siis uuesti.</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:14px">Error never names which field was wrong. role="alert", danger-soft fill, 3px danger rule. Password-visible state swaps ••• for text and the toggle reads „Peida parool".</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">02 · DASHBOARD — /admin</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1e">
+<div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Day one — the empty state</div>
+<div class="dv-card" style="width:360px" data-screen-label="Dashboard empty">
+<div style="padding:16px 20px;border-bottom:2px solid #14120F;display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;align-items:center;gap:9px"><div style="width:24px;height:24px;display:flex;flex-direction:column;gap:1.5px;flex:none"><div style="flex:1;display:flex;align-items:center;justify-content:center;border:1.5px solid #262320"><div style="font:800 12px/1 Lexend,sans-serif;color:#262320">M</div></div><div style="display:flex;gap:1.5px;height:5px"><div style="flex:1;background:#262320"></div><div style="flex:2;background:#262320"></div><div style="flex:1;background:#262320"></div></div></div><div style="font:800 13px/1 Lexend,sans-serif;color:#262320">MPH MEISTRID</div></div>
+<div style="display:flex;align-items:center;gap:14px"><div style="display:flex;align-items:center;gap:8px"><div style="display:flex;padding:2px;border:2px solid #262320"><div style="display:flex;flex-direction:column;width:26px;height:18px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"><div style="flex:1;background:#0072CE"></div><div style="flex:1;background:#161616"></div><div style="flex:1;background:#fff"></div></div></div><div style="display:flex;padding:2px;border:2px solid #DDD9D3;opacity:.55;filter:grayscale(55%)"><div style="display:flex;flex-direction:column;width:26px;height:18px;box-shadow:inset 0 0 0 1px rgba(27,29,31,.12)"><div style="flex:1;background:#fff"></div><div style="flex:1;background:#0039A6"></div><div style="flex:1;background:#D52B1E"></div></div></div></div><div style="font:600 16px/1 Lexend,sans-serif;color:#262320;text-decoration:underline;text-underline-offset:3px">Logi välja</div></div>
+</div>
+<div style="padding:28px 20px 32px;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="font:800 26px/1.1 Lexend,sans-serif;letter-spacing:-.02em;color:#14120F">Kodulehe haldus</div>
+<div style="font:400 18px/1.4 Lexend,sans-serif;color:#14120F">Mida soovid teha?</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="height:88px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#fff">+ Lisa uus töö</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E">Uus objekt koos fotodega kodulehele.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="height:88px;background:#fff;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">Muuda hindu</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E">Hinnakirja read ja sõnastus.</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid #14120F;padding-top:18px">
+<div style="font:800 20px/1 Lexend,sans-serif;color:#14120F">Tehtud tööd</div>
+<div style="font:400 16px/1 Lexend,sans-serif;color:#6A655E">0 tööd</div>
+</div>
+<div style="border:2px dashed #8B857C;border-radius:8px;padding:28px 22px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;background:#F6F5F2">
+<div style="width:44px;height:26px;display:flex;flex-direction:column;gap:2px"><div style="display:flex;gap:2px;flex:1"><div style="flex:1;background:#8B857C"></div><div style="flex:2;background:#8B857C"></div></div><div style="display:flex;gap:2px;flex:1"><div style="flex:2;background:#8B857C"></div><div style="flex:1;background:#8B857C"></div></div></div>
+<div style="font:600 18px/1.4 Lexend,sans-serif;color:#14120F">Siia tekivad sinu tehtud tööd.</div>
+<div style="font:400 16px/1.55 Lexend,sans-serif;color:#14120F">Vajuta <b>„+ Lisa uus töö"</b>. Esimene töö võtab umbes viis minutit: nimi, mõned fotod, avalda.</div>
+</div>
+<div style="font:600 17px/1 Lexend,sans-serif;color:#262320;text-decoration:underline;text-underline-offset:3px;align-self:center;padding:16px">Vaata kodulehte →</div>
+</div>
+</div>
+</div>
+<div class="dv-opt" id="1f">
+<div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Populated — rethought project rows</div>
+<div class="dv-card" style="width:360px" data-screen-label="Dashboard populated">
+<div style="padding:24px 20px 30px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<div style="font:800 20px/1 Lexend,sans-serif;color:#14120F">Tehtud tööd</div>
+<div style="font:400 16px/1 Lexend,sans-serif;color:#6A655E">3 tööd</div>
+</div>
+<div style="border:2px solid #14120F;border-radius:8px;overflow:hidden">
+<div style="display:flex;gap:14px;padding:14px 14px 12px">
+<div style="width:96px;height:72px;background:#DDD9D3;border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;font:500 9px/1.3 'Azeret Mono',monospace;color:#6A655E;text-align:center">FOTO</div>
+<div style="display:flex;flex-direction:column;gap:7px;min-width:0">
+<div style="font:600 18px/1.25 Lexend,sans-serif;color:#14120F">Vannitoa remont</div>
+<div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border-radius:50%;background:#1B6B3F;flex:none"></div><div style="font:600 16px/1.2 Lexend,sans-serif;color:#1B6B3F">Kodulehel näha</div></div>
+<div style="font:400 16px/1.3 Lexend,sans-serif;color:#6A655E">12 fotot · muudetud 14.8</div>
+</div>
+</div>
+<div style="display:flex;border-top:1px solid #DDD9D3">
+<div style="flex:1;height:56px;display:flex;align-items:center;justify-content:center;font:600 17px/1 Lexend,sans-serif;color:#14120F;border-right:1px solid #DDD9D3">Muuda</div>
+<div style="width:64px;height:56px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F;border-right:1px solid #DDD9D3">↑</div>
+<div style="width:64px;height:56px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↓</div>
+</div>
+</div>
+<div style="border:2px solid #8B857C;border-radius:8px;overflow:hidden">
+<div style="display:flex;gap:14px;padding:14px 14px 12px">
+<div style="width:96px;height:72px;background:#F6F5F2;border:1px dashed #8B857C;border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;font:500 9px/1.3 'Azeret Mono',monospace;color:#B5AFA4;text-align:center">FOTOT<br>EI OLE</div>
+<div style="display:flex;flex-direction:column;gap:7px;min-width:0">
+<div style="font:600 18px/1.25 Lexend,sans-serif;color:#14120F">Uus töö</div>
+<div style="display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border-radius:50%;border:2.5px solid #6A655E;box-sizing:border-box;flex:none"></div><div style="font:600 16px/1.2 Lexend,sans-serif;color:#6A655E">Mustand — kodulehel ei ole näha</div></div>
+<div style="font:400 16px/1.3 Lexend,sans-serif;color:#6A655E">0 fotot · muudetud täna</div>
+</div>
+</div>
+<div style="display:flex;border-top:1px solid #DDD9D3">
+<div style="flex:1;height:56px;display:flex;align-items:center;justify-content:center;font:600 17px/1 Lexend,sans-serif;color:#14120F;border-right:1px solid #DDD9D3">Muuda</div>
+<div style="width:64px;height:56px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F;border-right:1px solid #DDD9D3">↑</div>
+<div style="width:64px;height:56px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↓</div>
+</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">Hierarchy: title + visibility chip lead; meta drops to fg-muted; published rows get the ink border, drafts the faded one — the list answers „mis on kodulehel?" at a glance. Kustuta moved off the row into the edit screen (§4 separation), leaving three targets: Muuda 56px wide-hit, ↑ ↓ at 64px.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">03 · ADD / EDIT A JOB — /admin/tood/[id]</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1g">
+<div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>New draft · title-missing error</div>
+<div class="dv-card" style="width:360px" data-screen-label="Edit new draft">
+<div style="padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #DDD9D3">
+<div style="font:600 17px/1 Lexend,sans-serif;color:#262320">← Tagasi</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:7px"><div style="width:11px;height:11px;border-radius:50%;border:2.5px solid #6A655E;box-sizing:border-box"></div><div style="font:600 16px/1 Lexend,sans-serif;color:#6A655E">Mustand</div></div>
+</div>
+<div style="padding:24px 20px 30px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Töö nimi <span style="color:#B4231A">*</span></div>
+<div style="height:56px;border:2px solid #B4231A;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">nt. Vannitoa remont</div>
+<div style="font:600 16px/1.4 Lexend,sans-serif;color:#B4231A">Pane tööle nimi — ilma selleta ei saa avaldada.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Nimi vene keeles</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">Ремонт ванной</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E">Kui jätad tühjaks, näevad vene keeles lugejad eestikeelset teksti.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:800 20px/1 Lexend,sans-serif;color:#14120F">Fotod</div><div style="font:400 16px/1 Lexend,sans-serif;color:#6A655E">0 / 30</div></div>
+<div style="min-height:180px;border:2px dashed #262320;border-radius:8px;background:#F6F5F2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:22px">
+<div style="font:600 18px/1 Lexend,sans-serif;color:#14120F">Lisa fotod</div>
+<div style="font:400 16px/1.45 Lexend,sans-serif;color:#6A655E;text-align:center">Vali telefonist või lohista arvutis siia.</div>
+</div>
+<div style="height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;font:600 17px/1 Lexend,sans-serif;color:#14120F"><div style="width:18px;height:14px;border:2px solid #14120F;border-radius:3px;position:relative"><div style="position:absolute;left:5px;top:2px;width:4px;height:4px;border-radius:50%;background:#14120F"></div></div>Tee foto</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Asukoht</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">nt. Mustamäe, Tallinn</div>
+</div>
+</div>
+<div style="background:#14120F;padding:14px 20px 18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 -2px 12px rgba(27,25,22,.18)">
+<div style="display:flex;align-items:center;gap:7px"><div style="width:10px;height:10px;border-radius:50%;border:2.5px solid #B5AFA4;box-sizing:border-box"></div><div style="font:400 16px/1 Lexend,sans-serif;color:#B5AFA4">Mustand — kodulehel ei ole näha</div></div>
+<div style="height:56px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#14120F">Avalda töö</div>
+<div style="height:56px;border:2px solid rgba(255,255,255,.85);border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 17px/1 Lexend,sans-serif;color:#fff">Salvesta mustandina</div>
+</div>
+</div>
+</div>
+<div class="dv-opt" id="1h">
+<div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>Published job · bottom bar · delete zone</div>
+<div class="dv-card" style="width:360px" data-screen-label="Edit published">
+<div style="padding:24px 20px 26px;display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Kirjeldus</div>
+<div style="height:112px;border:2px solid #262320;border-radius:8px;padding:14px 16px;font:400 18px/1.5 Lexend,sans-serif;color:#14120F">Vannitoa täisremont: hüdroisolatsioon, plaatimine ja uus santehnika.</div>
+</div>
+<div style="border-top:2px solid #DDD9D3;padding-top:22px;margin-top:4px;display:flex;flex-direction:column;gap:10px">
+<div style="height:56px;border:2px solid #B4231A;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 17px/1 Lexend,sans-serif;color:#B4231A;background:#fff">Kustuta töö</div>
+<div style="font:400 16px/1.45 Lexend,sans-serif;color:#6A655E">Kustutamine eemaldab töö ja kõik fotod jäädavalt.</div>
+</div>
+</div>
+<div style="background:#14120F;padding:14px 20px 18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 -2px 12px rgba(27,25,22,.18)">
+<div style="display:flex;align-items:center;gap:7px"><div style="width:10px;height:10px;border-radius:50%;background:#7FB292"></div><div style="font:400 16px/1 Lexend,sans-serif;color:#B5AFA4">Kodulehel näha · 12 fotot</div></div>
+<div style="height:56px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#14120F">Salvesta muudatused</div>
+<div style="height:56px;border:2px solid rgba(255,255,255,.85);border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 17px/1 Lexend,sans-serif;color:#fff">Võta kodulehelt maha</div>
+</div>
+<div style="padding:14px 20px 18px;font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3">Bar refined (§6.6): status line on top so the bar names the current state before offering to change it; primary is white-on-ink (highest contrast in glare), secondary outlined. Delete sits at page bottom, below a rule, ≥24px clear, never in the bar. Saving state swaps primary text to „Salvestan…" with the spinner.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">04 · PHOTO MANAGER</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1j">
+<div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a>Uploading · photo rows · cover pinned</div>
+<div class="dv-card" style="width:360px" data-screen-label="Photo manager">
+<div style="padding:24px 20px 28px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:800 20px/1 Lexend,sans-serif;color:#14120F">Fotod</div><div style="font:400 16px/1 Lexend,sans-serif;color:#6A655E">5 / 30</div></div>
+<div style="border:2px solid #14120F;border-radius:8px;padding:18px 16px;display:flex;flex-direction:column;gap:12px;background:#F6F5F2">
+<div style="display:flex;justify-content:space-between;align-items:baseline">
+<div style="font:800 22px/1 Lexend,sans-serif;color:#14120F">Laadin üles 3 / 8</div>
+<div style="font:600 16px/1 Lexend,sans-serif;color:#6A655E">u 1 min</div>
+</div>
+<div style="height:10px;background:#DDD9D3;border-radius:5px;overflow:hidden"><div style="width:38%;height:100%;background:#262320"></div></div>
+<div style="font:600 16px/1.3 Lexend,sans-serif;color:#14120F">Ära sulge lehte.</div>
+</div>
+<div style="border:2px solid #B4231A;border-radius:8px;padding:12px 14px;display:flex;gap:12px;align-items:center;background:#FCEDEB">
+<div style="width:64px;height:48px;background:#DDD9D3;border-radius:5px;flex:none"></div>
+<div style="display:flex;flex-direction:column;gap:8px;flex:1;min-width:0">
+<div style="font:600 16px/1.3 Lexend,sans-serif;color:#B4231A">See foto ei jõudnud üles.</div>
+<div style="display:flex;gap:10px">
+<div style="height:44px;padding:0 14px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;font:600 16px/1 Lexend,sans-serif;color:#14120F;background:#fff;white-space:nowrap">Proovi uuesti</div>
+<div style="height:44px;padding:0 14px;display:flex;align-items:center;font:600 16px/1 Lexend,sans-serif;color:#B4231A;white-space:nowrap">Eemalda</div>
+</div>
+</div>
+</div>
+<div style="border:2px solid #14120F;border-radius:8px;overflow:hidden">
+<div style="display:flex;gap:12px;padding:12px;align-items:center;background:#F6F5F2">
+<div style="width:112px;height:84px;background:#DDD9D3;border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;font:500 9px/1 'Azeret Mono',monospace;color:#6A655E">FOTO 1</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:inline-flex;align-items:center;gap:7px;background:#14120F;border-radius:6px;padding:8px 12px;align-self:flex-start"><div style="width:9px;height:9px;background:#fff;border-radius:2px"></div><div style="font:600 16px/1 Lexend,sans-serif;color:#fff">Kaanepilt</div></div>
+<div style="font:400 16px/1.35 Lexend,sans-serif;color:#6A655E">Koduleht näitab seda esimesena.</div>
+</div>
+</div>
+</div>
+<div style="border:2px solid #8B857C;border-radius:8px;overflow:hidden">
+<div style="display:flex;gap:12px;padding:12px;align-items:center">
+<div style="width:112px;height:84px;background:#DDD9D3;border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;font:500 9px/1 'Azeret Mono',monospace;color:#6A655E">FOTO 2</div>
+<div style="height:56px;flex:1;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 16px/1.2 Lexend,sans-serif;color:#14120F;text-align:center;padding:0 8px">Tee kaanepildiks</div>
+</div>
+<div style="display:flex;border-top:1px solid #DDD9D3">
+<div style="flex:1;height:56px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F;border-right:1px solid #DDD9D3">↑</div>
+<div style="flex:1;height:56px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F;border-right:1px solid #DDD9D3">↓</div>
+<div style="flex:1.4;height:56px;display:flex;align-items:center;justify-content:center;font:600 16px/1 Lexend,sans-serif;color:#B4231A">Eemalda foto</div>
+</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">§6.5: one loud aggregate block — count, bar, „Ära sulge lehte" — readable at arm's length; only failures get their own row, with retry costing one photo. §6.3: rows kept over grid (56px targets don't fit 104px grid cells), but photo-forward at 112px; the cover row is pinned first on surface fill, so „which is the cover" is answered by position, not memory.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">05 · DELETE FLOW — END TO END</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1k">
+<div class="dv-olabel"><a class="dv-oid" href="#1k">1k</a>Dialog — cancel on top, specific consequence</div>
+<div class="dv-card" style="width:360px;background:#8B8880" data-screen-label="Delete dialog">
+<div style="padding:44px 16px;display:flex;align-items:center;justify-content:center">
+<div style="background:#fff;border-radius:8px;padding:24px 20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 8px 32px rgba(27,25,22,.35);width:100%">
+<div style="font:800 22px/1.2 Lexend,sans-serif;color:#14120F">Kustuta töö?</div>
+<div style="font:400 18px/1.5 Lexend,sans-serif;color:#14120F">Kustutatakse töö <b>„Vannitoa remont"</b> ja 12 fotot. Seda ei saa tagasi võtta.</div>
+<div style="background:#F6F5F2;border-radius:8px;padding:14px 16px;font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Kui tahad töö ainult kodulehelt ära võtta, kasuta nuppu <b>„Võta kodulehelt maha"</b>.</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#14120F;box-shadow:0 0 0 3px #DDD9D3">Jäta alles</div>
+<div style="height:56px;background:#B4231A;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#fff">Kustuta töö ja 12 fotot</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dv-opt" id="1l">
+<div class="dv-olabel"><a class="dv-oid" href="#1l">1l</a>Afterwards — back on the dashboard</div>
+<div class="dv-card" style="width:360px" data-screen-label="After delete">
+<div style="padding:24px 20px 30px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#EAF3ED;border-radius:8px;padding:16px;display:flex;gap:12px;align-items:flex-start">
+<div style="width:22px;height:22px;border-radius:50%;background:#1B6B3F;flex:none;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg);margin-top:-2px"></div></div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Töö „Vannitoa remont" on kustutatud.</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:800 20px/1 Lexend,sans-serif;color:#14120F">Tehtud tööd</div><div style="font:400 16px/1 Lexend,sans-serif;color:#6A655E">2 tööd</div></div>
+<div style="border:2px solid #14120F;border-radius:8px;height:74px;display:flex;align-items:center;padding:0 14px;gap:14px"><div style="width:72px;height:54px;background:#DDD9D3;border-radius:6px"></div><div style="font:600 18px/1 Lexend,sans-serif;color:#14120F">Köögi remont</div></div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">Rest → dialog → receipt: the success notice names the job, aria-live polite, and the count updates. No undo toast (§6.7) — the dialog's named consequence and the „maha võtmine" alternative are the guardrails.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">06 · PRICES — /admin/hinnad</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1m">
+<div class="dv-olabel"><a class="dv-oid" href="#1m">1m</a>Dirty state · free-text price rows</div>
+<div class="dv-card" style="width:360px" data-screen-label="Prices">
+<div style="padding:24px 20px 28px;display:flex;flex-direction:column;gap:18px">
+<div style="font:800 26px/1.1 Lexend,sans-serif;letter-spacing:-.02em;color:#14120F">Hinnakiri</div>
+<div style="background:#F6F5F2;border:2px solid #8B857C;border-radius:8px;padding:12px 16px;font:600 16px/1.4 Lexend,sans-serif;color:#14120F">Muudatused on salvestamata.</div>
+<div style="border:2px solid #14120F;border-radius:8px;padding:16px 14px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Teenus</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#14120F">Plaatimine</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Hind</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#14120F">alates 25 €/m²</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E">Kirjuta oma sõnadega — „alates …", „kokkuleppel".</div>
+</div>
+<div style="display:flex;border-top:1px solid #DDD9D3;padding-top:10px;gap:10px">
+<div style="width:64px;height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↑</div>
+<div style="width:64px;height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↓</div>
+<div style="flex:1;height:56px;display:flex;align-items:center;justify-content:center;font:600 16px/1 Lexend,sans-serif;color:#B4231A">Eemalda rida</div>
+</div>
+</div>
+<div style="height:56px;border:2px dashed #262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 17px/1 Lexend,sans-serif;color:#14120F;background:#F6F5F2">+ Lisa rida</div>
+</div>
+<div style="background:#14120F;padding:14px 20px 18px;box-shadow:0 -2px 12px rgba(27,25,22,.18)">
+<div style="height:56px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#14120F">Salvesta</div>
+</div>
+</div>
+</div>
+<div class="dv-opt" id="1n">
+<div class="dv-olabel"><a class="dv-oid" href="#1n">1n</a>Error screen + saved state</div>
+<div class="dv-card" style="width:360px" data-screen-label="Error + saved">
+<div style="padding:24px 20px 26px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#EAF3ED;border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:center">
+<div style="width:22px;height:22px;border-radius:50%;background:#1B6B3F;flex:none;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg);margin-top:-2px"></div></div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#14120F">Salvestatud.</div>
+</div>
+<div style="border-top:1px solid #DDD9D3"></div>
+<div style="display:flex;flex-direction:column;gap:16px;padding:26px 0 8px;align-items:flex-start">
+<div style="font:800 24px/1.25 Lexend,sans-serif;color:#14120F;text-wrap:balance">Midagi läks valesti.</div>
+<div style="font:400 18px/1.5 Lexend,sans-serif;color:#14120F">Muudatused ei jõudnud kohale. Su tööd kodulehel on alles.</div>
+<div style="height:56px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#fff;align-self:stretch">Proovi uuesti</div>
+<div style="font:600 17px/1 Lexend,sans-serif;color:#262320;text-decoration:underline;text-underline-offset:3px;align-self:center;padding:8px">Tagasi töölauale</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">Error and 404 share this shape: one sentence, one retry where it helps, one route home. No codes, no English. The 404 sentence: „Seda lehte ei ole olemas."</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">07 · SIZES — 768 AND DESKTOP</div>
+<div class="dv-opts">
+<div class="dv-opt" id="1p">
+<div class="dv-olabel"><a class="dv-oid" href="#1p">1p</a>768px — same column, more air</div>
+<div class="dv-card" style="width:560px" data-screen-label="Tablet dashboard">
+<div style="padding:34px 72px 40px;display:flex;flex-direction:column;gap:20px">
+<div style="font:800 30px/1.1 Lexend,sans-serif;letter-spacing:-.02em;color:#14120F">Kodulehe haldus</div>
+<div style="height:88px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#fff">+ Lisa uus töö</div>
+<div style="height:88px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">Muuda hindu</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">One column to 900px, centered with side margins growing — no sidebar, no tabs, no new layout to learn between his phone and the office computer. Buttons keep their heights; only line length changes.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1q">
+<div class="dv-olabel"><a class="dv-oid" href="#1q">1q</a>768px — edit screen, bilingual fields pair up</div>
+<div class="dv-card" style="width:560px" data-screen-label="Tablet edit">
+<div style="padding:30px 40px 34px;display:flex;flex-direction:column;gap:20px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Töö nimi <span style="color:#B4231A">*</span></div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#14120F">Vannitoa remont</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Nimi vene keeles</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">Ремонт ванной</div>
+</div>
+</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E;margin-top:-8px">Kui jätad tühjaks, näevad vene keeles lugejad eestikeelset teksti.</div>
+<div style="display:flex;gap:12px;align-items:center">
+<div style="width:132px;height:96px;background:#DDD9D3;border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;font:500 9px/1 'Azeret Mono',monospace;color:#6A655E">FOTO 1</div>
+<div style="display:inline-flex;align-items:center;gap:7px;background:#14120F;border-radius:6px;padding:8px 12px"><div style="width:9px;height:9px;background:#fff;border-radius:2px"></div><div style="font:600 16px/1 Lexend,sans-serif;color:#fff">Kaanepilt</div></div>
+<div style="margin-left:auto;display:flex;gap:10px">
+<div style="width:56px;height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↑</div>
+<div style="width:56px;height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↓</div>
+</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">≥640px: ET and RU fields sit side by side (one hint for the pair), photo rows gain width but keep 56px controls; the sticky bar and its order do not change. Still one column — nothing new to learn.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1r">
+<div class="dv-olabel"><a class="dv-oid" href="#1r">1r</a>Desktop — the same column, centered at 900</div>
+<div class="dv-card" style="width:640px;background:#EAE8E2" data-screen-label="Desktop dashboard">
+<div style="background:#fff;border-bottom:2px solid #14120F;padding:16px 40px;display:flex;justify-content:space-between;align-items:center">
+<div style="display:flex;align-items:center;gap:9px"><div style="width:24px;height:24px;display:flex;flex-direction:column;gap:1.5px;flex:none"><div style="flex:1;display:flex;align-items:center;justify-content:center;border:1.5px solid #262320;background:#fff"><div style="font:800 12px/1 Lexend,sans-serif;color:#262320">M</div></div><div style="display:flex;gap:1.5px;height:5px"><div style="flex:1;background:#262320"></div><div style="flex:2;background:#262320"></div><div style="flex:1;background:#262320"></div></div></div><div style="font:800 13px/1 Lexend,sans-serif;color:#262320">MPH MEISTRID</div></div>
+<div style="font:600 15px/1 Lexend,sans-serif;color:#262320;text-decoration:underline;text-underline-offset:3px">Logi välja</div>
+</div>
+<div style="background:#fff;padding:34px 0 40px;display:flex;justify-content:center">
+<div style="width:400px;display:flex;flex-direction:column;gap:16px;border-left:1px dashed #DDD9D3;border-right:1px dashed #DDD9D3;padding:0 24px">
+<div style="font:800 26px/1.1 Lexend,sans-serif;letter-spacing:-.02em;color:#14120F">Kodulehe haldus</div>
+<div style="height:72px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#fff">+ Lisa uus töö</div>
+<div style="height:72px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#14120F;background:#fff">Muuda hindu</div>
+</div>
+</div>
+<div style="background:#fff;padding:0 40px 20px;font:400 12px/1.6 Lexend,sans-serif;color:#6A655E">Above 900px the column stops growing and centers (dashed guides shown at max-width 900); the header spans the page. Same stack top to bottom as the phone — he uses the office computer maybe twice a year, so it must be the identical product, only wider.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-grp">08 · REMAINING STATES &amp; SHARED PARTS</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1s">
+<div class="dv-olabel"><a class="dv-oid" href="#1s">1s</a>Shared components — field, bilingual, notices</div>
+<div class="dv-card" style="width:400px" data-screen-label="Shared components">
+<div style="padding:24px 20px 26px;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Asukoht</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#14120F">Mustamäe, Tallinn</div>
+<div style="font:400 16px/1.4 Lexend,sans-serif;color:#6A655E">Linnaosa või asula on piisav.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Asukoht <span style="font-weight:400;color:#6A655E">— vene keeles</span></div>
+<div style="height:56px;border:2px solid #8B857C;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">Мустамяэ, Таллинн</div>
+</div>
+<div style="background:#FCEDEB;border-left:3px solid #B4231A;border-radius:0 8px 8px 0;padding:16px;display:flex;gap:12px;align-items:flex-start">
+<div style="font:800 18px/1 Lexend,sans-serif;color:#B4231A;flex:none">!</div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Salvestamine ei õnnestunud. Proovi uuesti.</div>
+</div>
+<div style="background:#EAF3ED;border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:center">
+<div style="width:22px;height:22px;border-radius:50%;background:#1B6B3F;flex:none;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg);margin-top:-2px"></div></div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Töö on kodulehel.</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">Field: 16/600 label, 56px input, hint in fg-muted, error beneath in danger. RU inputs take the quieter line-strong border — legally optional, visually secondary. Error notice = role="alert"; success = aria-live polite.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1t">
+<div class="dv-olabel"><a class="dv-oid" href="#1t">1t</a>Logout confirmation</div>
+<div class="dv-card" style="width:360px;background:#8B8880" data-screen-label="Logout dialog">
+<div style="padding:44px 16px;display:flex;align-items:center;justify-content:center">
+<div style="background:#fff;border-radius:8px;padding:24px 20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 12px 32px rgba(20,18,15,.16);width:100%">
+<div style="font:800 22px/1.2 Lexend,sans-serif;color:#14120F">Logi välja?</div>
+<div style="font:400 18px/1.5 Lexend,sans-serif;color:#14120F">Kõik on salvestatud. Saad alati uuesti sisse logida.</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#14120F;box-shadow:0 0 0 3px #DDD9D3">Jää sisse</div>
+<div style="height:56px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#fff">Logi välja</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E">Logout is not destructive, so no danger red — but the same inverted order: staying lands under the thumb. If a form is dirty, the body line changes to name the unsaved job.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1u">
+<div class="dv-olabel"><a class="dv-oid" href="#1u">1u</a>Prices — full row (ET + RU + note) and empty state</div>
+<div class="dv-card" style="width:360px" data-screen-label="Prices full row">
+<div style="padding:24px 20px 28px;display:flex;flex-direction:column;gap:18px">
+<div style="border:2px solid #14120F;border-radius:8px;padding:16px 14px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Teenus</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#14120F">Plaatimine</div>
+<div style="height:56px;border:2px solid #8B857C;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">Укладка плитки</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Hind</div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#14120F">alates 25 €/m²</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font:600 16px/1 Lexend,sans-serif;color:#14120F">Märkus <span style="font-weight:400;color:#6A655E">— ei ole kohustuslik</span></div>
+<div style="height:56px;border:2px solid #262320;border-radius:8px;display:flex;align-items:center;padding:0 16px;font:400 18px/1 Lexend,sans-serif;color:#B5AFA4">Koos materjali paigaldusega</div>
+</div>
+<div style="display:flex;border-top:1px solid #DDD9D3;padding-top:10px;gap:10px">
+<div style="width:64px;height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↑</div>
+<div style="width:64px;height:56px;border:2px solid #14120F;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 20px/1 Lexend,sans-serif;color:#14120F">↓</div>
+<div style="flex:1;height:56px;display:flex;align-items:center;justify-content:center;font:600 16px/1 Lexend,sans-serif;color:#B4231A;white-space:nowrap">Eemalda rida</div>
+</div>
+</div>
+<div style="border:2px dashed #8B857C;border-radius:8px;padding:24px 20px;display:flex;flex-direction:column;gap:12px;background:#F6F5F2">
+<div style="font:600 18px/1.4 Lexend,sans-serif;color:#14120F">Hinnakirja ridu veel ei ole.</div>
+<div style="font:400 16px/1.5 Lexend,sans-serif;color:#14120F">Vajuta <b>„+ Lisa rida"</b> — teenus, hind ja soovi korral märkus.</div>
+</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">RU translations optional, same quiet border as everywhere. Price stays free text — the client owns the wording.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1v">
+<div class="dv-olabel"><a class="dv-oid" href="#1v">1v</a>Saving state · 30-photo cap · deleting</div>
+<div class="dv-card" style="width:360px" data-screen-label="Saving and cap states">
+<div style="padding:24px 20px 26px;display:flex;flex-direction:column;gap:18px">
+<div style="background:#16130F;border-radius:8px;padding:14px 16px 18px;display:flex;flex-direction:column;gap:10px">
+<div style="font:400 16px/1 Lexend,sans-serif;color:#B5AFA4">Mustand — kodulehel ei ole näha</div>
+<div style="height:56px;background:#6A655E;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;font:600 18px/1 Lexend,sans-serif;color:#fff"><div style="width:16px;height:16px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%"></div>Avaldan…</div>
+</div>
+<div style="background:#F6F5F2;border:2px solid #8B857C;border-radius:8px;padding:14px 16px;font:600 16px/1.45 Lexend,sans-serif;color:#14120F">30 fotot on täis — eemalda mõni, et uusi lisada.</div>
+<div style="height:56px;border:2px solid #DDD9D3;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;font:600 17px/1 Lexend,sans-serif;color:#B5AFA4;background:#F6F5F2">Lisa fotod</div>
+<div style="font:400 12px/1.6 Lexend,sans-serif;color:#6A655E;border-top:1px solid #DDD9D3;padding-top:12px">While saving/publishing/deleting: the pressed button shows a spinner + present-tense verb ("Avaldan…", "Salvestan…", "Kustutan…"), everything else disables. At the cap the notice appears and the add controls go disabled (surface-2 fill, muted label) — visible but clearly off.</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1w">
+<div class="dv-olabel"><a class="dv-oid" href="#1w">1w</a>Not found</div>
+<div class="dv-card" style="width:360px" data-screen-label="404">
+<div style="padding:44px 20px 36px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+<div style="font:800 24px/1.25 Lexend,sans-serif;color:#14120F">Seda lehte ei ole olemas.</div>
+<div style="font:400 18px/1.5 Lexend,sans-serif;color:#14120F">Võib-olla on töö vahepeal kustutatud.</div>
+<div style="height:56px;background:#262320;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 18px/1 Lexend,sans-serif;color:#fff;align-self:stretch">Tagasi töölauale</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<p style="margin:26px 0 0;font:400 11.5px/1.6 Lexend,sans-serif;color:rgba(27,29,31,.5)">Try next: "make the delete dialog a live prototype" · "show the login rate-limit counting down" · "show the edit screen at 360 with everything filled"</p>
+</section>
+
+</x-dc>
+</body>
+</html>

@@ -1,8 +1,13 @@
 import type { MetadataRoute } from 'next';
 
-import { SITE_URL } from '@/lib/env';
+import { NOINDEX, SITE_URL } from '@/lib/env';
 
 export default function robots(): MetadataRoute.Robots {
+  // Demo and preview deployments are closed to crawlers entirely — see NOINDEX in env.ts.
+  if (NOINDEX) {
+    return { rules: { userAgent: '*', disallow: '/' } };
+  }
+
   return {
     rules: {
       userAgent: '*',

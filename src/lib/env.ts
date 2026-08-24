@@ -128,6 +128,20 @@ export function mailConfigured(): boolean {
 
 /* ------------------------------------------------------------------- public */
 
+/**
+ * True on demo and preview deployments.
+ *
+ * A demo carries `{{PLACEHOLDER}}` copy and a portfolio that is not the client's real work.
+ * If Google indexes it, the placeholders enter search results and the demo competes with the
+ * real site for the same Estonian queries once that launches — duplicate content on a domain
+ * we control, which is the expensive kind. So every non-production deployment serves
+ * `noindex` and a disallow-all robots.txt.
+ *
+ * Set explicitly rather than inferred from the hostname, so promoting the site to production
+ * is a deliberate act (unset the variable) and not something that happens by accident.
+ */
+export const NOINDEX = process.env.SITE_NOINDEX === '1';
+
 /** Public origin. Not validated above because it is also read on the client. */
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mphmeistrid.ee'
