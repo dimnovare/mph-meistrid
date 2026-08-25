@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
 import { ProjectImage } from '@/components/ui/ProjectImage';
-import { publicUrl } from '@/lib/r2';
+import { buildMediaSrc } from '@/lib/media';
 import { t, type Locale, type Project, type ProjectImage as ProjectPhoto } from '@/lib/types';
 
 import { GalleryThumb, Lightbox, type LightboxImage } from './Lightbox';
@@ -32,7 +32,7 @@ export async function Gallery({ project, locale }: { project: Project; locale: L
 
   const slides: LightboxImage[] = images.map((image, position) => ({
     id: image.id,
-    src: publicUrl(`media/projects/${project.id}/${image.id}`),
+    src: buildMediaSrc(project.id, image),
     width: image.width,
     height: image.height,
     blurDataURL: image.blurDataURL,

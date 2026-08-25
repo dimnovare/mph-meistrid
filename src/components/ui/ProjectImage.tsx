@@ -1,15 +1,16 @@
 import Image from 'next/image';
 
-import { publicUrl } from '@/lib/r2';
+import { buildMediaSrc } from '@/lib/media';
 import type { ProjectImage as StoredImage } from '@/lib/types';
 
 /**
  * The one place that knows how a stored photo becomes an `<Image>`.
  *
- * A photo's `src` is `<publicBase>/media/projects/<projectId>/<imageId>` — deliberately with
- * **no width and no extension**. `src/lib/image-loader.ts` appends `-{width}.webp` after
- * snapping the requested width to a variant that actually exists in R2. Building that URL
- * anywhere else would mean two places to fix when the ladder changes.
+ * A photo's `src` comes from `buildMediaSrc` — no width, no extension, plus an `@<max>`
+ * marker naming the largest variant this particular photo has.
+ * `src/lib/image-loader.ts` strips the marker and appends `-{width}.webp`, clamped to what
+ * exists. The marker matters: the ladder stops at the source's own width, so a 1600px photo
+ * has no 2000px variant, and without it the srcset advertised a URL that 404s.
  *
  * This imports `@/lib/r2`, which is `server-only`. That is on purpose: if a client component
  * ever tries to render a project photo the build fails loudly instead of shipping the R2
@@ -46,7 +47,7 @@ export function ProjectImage({
   preload = false,
   className = '',
 }: Props) {
-  const src = publicUrl(`media/projects/${projectId}/${image.id}`);
+  const src = buildMediaSrc(projectId, image);
 
   // `placeholder="blur"` throws for a remote image with no `blurDataURL`. An older record
   // written before the blur pipeline existed would have an empty string, so guard rather

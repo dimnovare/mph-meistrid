@@ -1,4 +1,4 @@
-import { publicUrl } from './r2';
+import { mediaVariantUrl } from './media';
 import { urlFor } from './seo';
 import { SITE_URL } from './env';
 import { isPlaceholder, site } from '@/content/site';
@@ -131,5 +131,5 @@ export function breadcrumbJsonLd(
 
 function largestVariantUrl(projectId: string, imageId: string, variants: number[]): string {
   const width = variants[variants.length - 1] ?? 1600;
-  return publicUrl(`media/projects/${projectId}/${imageId}-${width}.webp`);
+  return mediaVariantUrl(projectId, imageId, width);
 }
