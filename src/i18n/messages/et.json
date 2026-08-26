@@ -100,7 +100,7 @@
     },
     "photos": {
       "label": "Fotod (kui sul on)",
-      "hint": "Kuni '{{MAX_UPLOAD_COUNT}}' pilti. Suured pildid tehakse enne saatmist väiksemaks.",
+      "hint": "Kuni {count} pilti. Suured pildid tehakse enne saatmist väiksemaks.",
       "button": "Vali fotod",
       "remove": "Eemalda"
     },
@@ -115,7 +115,7 @@
     "errors": {
       "fileTooBig": "See pilt on liiga suur. Proovi mõnda teist.",
       "fileType": "Seda faili ei saa lisada. Lisada saab ainult pilte: JPG, PNG, HEIC või WebP.",
-      "tooManyFiles": "Korraga saab lisada kuni '{{MAX_UPLOAD_COUNT}}' pilti."
+      "tooManyFiles": "Korraga saab lisada kuni {count} pilti."
     }
   },
   "footer": {

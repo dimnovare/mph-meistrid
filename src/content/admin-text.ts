@@ -9,7 +9,7 @@
  *
  * Because there is no ICU here:
  *
- * - `{{SUPPORT_CONTACT}}` and `{{MAX_PHOTOS_PER_WORK}}` are plain text and need no escaping
+ * - `{{MAX_PHOTOS_PER_WORK}}` is plain text and needs no escaping; the code substitutes it
  *   (unlike `src/i18n/messages/*.json`, where a literal brace has to be quoted). They are
  *   still fill-in-before-launch values — see docs/CONTENT.md.
  * - Runtime tokens — `{name}`, `{count}`, `{date}`, `{done}`, `{total}`, `{failed}` — are
@@ -41,7 +41,7 @@ export const adminText = {
     hidePassword: 'Peida parool',
     submit: 'Logi sisse',
     working: 'Login sisse…',
-    help: 'Kui parool on kadunud, helista {{SUPPORT_CONTACT}}.',
+    help: 'Kui parool on kadunud, võta ühendust kodulehe tegijaga.',
 
     logout: {
       label: 'Logi välja',
@@ -298,7 +298,7 @@ export const adminText = {
     wrongPassword: 'Parool ei ole õige. Vaata suured ja väiksed tähed üle ja proovi uuesti.',
     /** Rate limiter tripped — 8 failed attempts in 15 minutes. */
     tooManyAttempts:
-      'Liiga palju katseid. Oota 15 minutit ja proovi uuesti. Kui parool on kadunud, helista {{SUPPORT_CONTACT}}.',
+      'Liiga palju katseid. Oota 15 minutit ja proovi uuesti. Kui parool on kadunud, võta ühendust kodulehe tegijaga.',
     sessionExpired: 'Sind logiti turvalisuse pärast välja. Logi uuesti sisse ja proovi uuesti.',
     notLoggedIn: 'Sa ei ole sisse logitud. Logi sisse, et edasi minna.',
     /** The Origin check rejected the request — usually a stale tab. */
@@ -366,7 +366,7 @@ export const adminText = {
 
     /* ------------------------------------------------------------------ fallback */
 
-    generic: 'Midagi läks viltu. Proovi uuesti. Kui see ei aita, helista {{SUPPORT_CONTACT}}.',
+    generic: 'Midagi läks viltu. Proovi uuesti. Kui see ei aita, võta ühendust kodulehe tegijaga.',
     retry: 'Proovi uuesti',
   },
 } as const;

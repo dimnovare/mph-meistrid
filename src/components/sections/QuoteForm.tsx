@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 import { useActionState, useEffect, useRef, useState, type ChangeEvent } from 'react';
 
 import { Field } from '@/components/ui/Field';
-import { isPlaceholder, site } from '@/content/site';
 import { submitQuoteAction, type QuoteState } from '@/app/quote-action';
 import { FileTooLargeError, prepareForUpload } from '@/lib/client-image';
 import { MAX_QUOTE_PHOTOS } from '@/lib/quote-limits';
@@ -58,16 +57,6 @@ type Attachment = {
   previewUrl: string;
 };
 
-/**
- * The catalogue carries developer-owned `{{TOKENS}}` (docs/CONTENT.md 1.5) that no longer
- * have an ICU argument to bind to — they are ICU-escaped literals. Substituting the real
- * constant is what those tokens are *for*; an unknown token is left visible rather than
- * blanked, so an unfinished value stays obvious instead of silently disappearing.
- */
-function fill(text: string, values: Record<string, string | null>): string {
-  return text.replace(/\{\{(\w+)\}\}/g, (token, key: string) => values[key] ?? token);
-}
-
 export function QuoteForm() {
   const t = useTranslations('quote');
   const [state, formAction, isPending] = useActionState(submitQuoteAction, {});
@@ -100,12 +89,6 @@ export function QuoteForm() {
   // Inlined at build time, so an absent key means the widget is not in the bundle at all and
   // the form still works — which is the correct behaviour for a local dev run.
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-
-  const phone = isPlaceholder(site.phoneDisplay) ? null : site.phoneDisplay;
-  const tokens = {
-    PHONE: phone,
-    MAX_UPLOAD_COUNT: String(MAX_QUOTE_PHOTOS),
-  };
 
   const showSuccess = Boolean(state.ok) && state !== dismissedResult;
 
@@ -151,13 +134,13 @@ export function QuoteForm() {
 
     const room = MAX_QUOTE_PHOTOS - photos.length;
     if (room <= 0) {
-      setPhotoError(fill(t('errors.tooManyFiles'), tokens));
+      setPhotoError(t('errors.tooManyFiles', { count: MAX_QUOTE_PHOTOS }));
       return;
     }
 
     const accepted: Attachment[] = [];
     let failure: string | null =
-      picked.length > room ? fill(t('errors.tooManyFiles'), tokens) : null;
+      picked.length > room ? t('errors.tooManyFiles', { count: MAX_QUOTE_PHOTOS }) : null;
 
     for (const file of picked.slice(0, room)) {
       try {
@@ -167,10 +150,7 @@ export function QuoteForm() {
         keySeq.current += 1;
         accepted.push({ key: `photo-${keySeq.current}`, ...prepared });
       } catch (err) {
-        failure = fill(
-          t(err instanceof FileTooLargeError ? 'errors.fileTooBig' : 'errors.fileType'),
-          tokens,
-        );
+        failure = t(err instanceof FileTooLargeError ? 'errors.fileTooBig' : 'errors.fileType');
       }
     }
 
@@ -314,7 +294,7 @@ export function QuoteForm() {
               {t('photos.label')}
             </span>
             <p id="quote-photos-hint" className="text-small text-fg-muted">
-              {fill(t('photos.hint'), tokens)}
+              {t('photos.hint', { count: MAX_QUOTE_PHOTOS })}
             </p>
 
             <div className="mt-2">

@@ -20,12 +20,20 @@ export const site = {
   registryCode: '17317439',
 
   /**
-   * registry — the number published in the business register.
+   * The business register publishes +372 5565 7983, but the client has asked for no phone
+   * number on the site for now, so this stays a placeholder rather than being deleted —
+   * every consumer already handles the unset case, and restoring it is a one-line change.
+   *
+   * While it is unset: `telHref()` returns null, so the header, call bar, hero and mobile
+   * menu point at #kontakt instead of offering a dead `tel:` link, the contact and footer
+   * rows are dropped rather than printed, and the JSON-LD omits `telephone` — an invented
+   * or empty number in structured data is worse than none.
+   *
    * E.164, used for the tel: href.
    */
-  phone: '+37255657983',
+  phone: '{{PHONE_E164}}',
   /** Human formatting, used for the visible label. */
-  phoneDisplay: '+372 5565 7983',
+  phoneDisplay: '{{PHONE_DISPLAY}}',
 
   /**
    * The register lists info@lemoh.ee, which is a different domain and presumably a different
